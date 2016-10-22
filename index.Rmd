@@ -1,0 +1,55 @@
+--- 
+title: "Beginner R Workshop"
+author: "Ann Arbor R User Group"
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook:
+    css: css/style.css
+    split_by: section+number
+    search: yes
+    config:
+      fontsettings:
+        theme: night
+        family: sans
+        size: 1.5
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+new_session: yes
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+# Welcome {-}
+
+This is the core content for the R Workshop.
+
+Introductions here.
+
+Welcome to the R community (have a sticker).
+
+## Requirements {-}
+
+These lessons assume no prior knowledge of the skills or tools, but working through this lesson requires working copies of the software described below. To most effectively use these materials, please make sure to install everything before working through this lesson.
+
+### R and RStudio {-}
+
+R is a programming language that is especially powerful for data exploration, visualization, and statistical analysis. To interact with R, we use RStudio.
+
+Get R from the [R project website](https://cloud.r-project.org/).
+
+Get Rstudio from the [RStudio website](https://www.rstudio.com/products/rstudio/)
+
+## Slack {-}
+
+We'll use Slack to communicate during the workshop. The AARUG slack group is also a great resource for hearing about R-related events, announcements, and receiving help with your R code.
+
+Request to join the AARUG slack group [here](http://annarborrusergroup.github.io/slack/).
+
+## Authors and Contributors {-}
+
+Lesson plans were adapted from [Software Carpentry](http://software-carpentry.org/) and [Data Carpentry](http://www.datacarpentry.org/) lessons.
+
+### Contributors {-}
+
+Michelle Berry, Ellis Valentiner, Rob Weyant, Clayton Yochum, Andrew Moore
+

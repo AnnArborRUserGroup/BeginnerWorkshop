@@ -1,0 +1,7 @@
+chapter_name: "Lesson "
+exclude: ['other-lessons']
+rmd_files: [
+  "index.Rmd",
+  "lessons/basics/basics.Rmd",
+  "lessons/data-visualization/ggplot2.Rmd"
+  ]
