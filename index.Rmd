@@ -49,7 +49,8 @@ Request to join the AARUG slack group [here](http://annarborrusergroup.github.io
 
 Lesson plans were adapted from [Software Carpentry](http://software-carpentry.org/) and [Data Carpentry](http://www.datacarpentry.org/) lessons.
 
+You can contribute to these lessons by clicking the Edit <i class="fa fa-edit"></i> button from any page.
+
 ### Contributors {-}
 
 Michelle Berry, Ellis Valentiner, Rob Weyant, Clayton Yochum, Andrew Moore
-

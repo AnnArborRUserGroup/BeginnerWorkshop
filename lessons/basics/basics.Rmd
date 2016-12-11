@@ -1,6 +1,5 @@
 # Basics of R
 
-
 ```{r, echo=FALSE, purl=FALSE}
 knitr::opts_chunk$set(results='hide')
 ```
@@ -27,7 +26,6 @@ for statistics but also data science. Inspired by the programming language S.
 * For people who have experience in programmming: R is both an object-oriented
   and a so-called [functional language](http://adv-r.had.co.nz/Functional-programming.html)
 * Large and growing community of peers.
-
 
 ## Awesome R tools
 
@@ -66,7 +64,6 @@ Rstudio's layout includes 4 quadrants
 
 To adjust the layout of your quadrants go to Preferences > Pane Layout 
 
-
 ## Interacting with R
 
 There are two main ways of interacting with R: using the console or by using
@@ -92,8 +89,6 @@ the console will show a `+` prompt. It means that you haven't finished entering
 a complete command. This is because you have not 'closed' a parenthesis or
 quotation. If you're in Rstudio and this happens, click inside the console
 window and press `Esc`; this should help you out of trouble.
-
-
 
 ## Seeking help
 

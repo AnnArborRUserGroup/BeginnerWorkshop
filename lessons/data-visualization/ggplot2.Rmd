@@ -53,13 +53,10 @@ In this example
 
 More recently, R users have moved away from base graphic options and towards a plotting package called `ggplot2` that adds a lot of functionality to the basic plots seen above. The syntax is different but it’s extremely powerful and flexible. We can start by re-creating some of the above plots but using ggplot functions to get a feel for the syntax.
 
-```{r install ggplot2, eval=FALSE}
-install.packages("ggplot2")
-```
+Install and load the `ggplot2` package.
 
-Load the `ggplot2` package.
-
-```{r load ggplot2}
+```{r install ggplot2}
+# install.packages("ggplot2")
 library(ggplot2)
 ```
 

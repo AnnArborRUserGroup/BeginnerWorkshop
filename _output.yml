@@ -1,0 +1,9 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">Beginner Workshop</a></li>
+      after: |
+        <li><a href="https://github.com/AnnArborRUserGroup/BeginnerWorkshop" target="blank">Published with bookdown</a></li>
+    edit: https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/%s
