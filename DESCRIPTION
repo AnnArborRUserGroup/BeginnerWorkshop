@@ -1,0 +1,5 @@
+Package: Workshop
+Title: Beginner Workshop
+Version: 0.0.1
+Imports: bookdown, ggplot2
+Remotes: AnnArborRUserGroup/BeginnerWorkshop
