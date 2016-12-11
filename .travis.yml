@@ -1,8 +1,12 @@
 language: r
-cache: packages
+cache:
+  packages: true
+  directories:
+  - $TRAVIS_BUILD_DIR/_bookdown_files
 env:
   global:
   - secure: UIbgMWqRrygTCOcmkZ34vAmrYCIJYtFSCiR09XO0wuPIvipEi9c0gdjn6zGRdjnNg7S7B4F7bT4BpF1/VwXistzX4qf7tAamImeTpUdrv7FHGYWCvi1PlKDxhopTSmU9Y4o7jH8AoR9ZI+Bitc33JQOnDpyo50jeb7TXNmUz4IBpvijhxHPvoEitzQ+Pb+minW+H/TrKE1dU0w6mTh5xc4+EjQoU77+RfaIQlEpSEOuYpT3DjrsiJ97XXTLOKfn+Ye3wLHondkMGkVso6OnM4J6N55WhPQpMuYzzmk+L33DixL36E1xPzsEizSOR8NsPuKTPjvq/gT0U17AleCYNl/raP9ROpXGKdFzXc9lVZcAtvtpIGA5aqmHrVIs8MgcmdwPiL0qx3zHiSyRGBepPcMlvwzmNlAeYXqL3tkGCMdQp63Vvy20BliAI8Uhd+1VNha3A0SXmTrWHQt79r76INuJV8/x3S9uygnoiYWLfqoQrWkOOrAxib5IKrSwwS5cmhKsKII62l0tQEPaWdIFsdFxnJsbyDQLqdJjs7BTO1HTcgXF/SNCCnto+IoTVxhYriV6IEHcTXfausNzerYC+SWgs5ejasnHcoln4/xWR7kNYe1Xg22hycmbeL1zYjvX98Xtv9jqh+pdcIFdxvOaH9svhIS+oVbL9zRXpXha3h90=
+  - secure: mk44U9+jPlq0XIlPzcSaYFhsO+57FexJU5YSRkVW7bCQ+FmEYjARzJFeBzxA2l4dkoDZDkiyCdtbPUmtxj06RRdJP8H1c0BqAMGxF1mw/i7p74hKrZxEBmiAZj9P8LgeCVXpc3bZ0Ho/VnbFqr8FInZm+LVMAcA4umTIh4XEPXPEMEZO0/EJAfDyCs3ILAeFXppwtSfeXJfC7JMzmTRSP/PLDRcqHYGC+FZGzI7veux2WLhibYTe3YxzKc99mT/BiSRZ4lhJrkbBDoUUT5ptIBmaY9kL5xjEuxSjIUJ143lPStGeeZzE6eEUhXeZnwwZSD++BTwOTCV53DAM3BU6LGN0k5IHr5/bhI5a8o3Ar9gjnnNiGWqmutmVQ7jalcVSaY5w0vQZvEU9jTge4llul2Ry4fuLxev5nxYxpB38DLw+YTs8LsIwmbLwcyzJ7dd5vYsdfL/mfAnGrTgT/AopmSBYAyM3urBMuRULOjoKVHbxa5ZlL4lOB5U/VhFPU828mRD6Dwt+RP98erWeIFAtE+aeb/7i0IRAgzkYN4TJTJF0SIwPDIDNDk5m57e6L3pXxLpI9Z9x/DtDuGTaY34FgIZyJxwereF+0b6d1QkgisELt9HqxHBY8fHD/uMJymHvTafG0iFs1VaFtGmKkoIkq7SyNw3pn/3Icr7SDuuwjdI=
 before_script:
 - chmod +x ./_authors.sh
 - chmod +x ./_build.sh
@@ -12,7 +16,3 @@ script:
 - ./_build.sh
 - ./_deploy.sh
 sudo: false
-cache:
-  packages: yes
-  directories:
-    - $TRAVIS_BUILD_DIR/_bookdown_files

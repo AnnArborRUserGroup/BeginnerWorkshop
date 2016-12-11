@@ -1,7 +1,6 @@
 chapter_name: "Lesson "
 edit: https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/%s
 exclude: ['other-lessons']
-output_dir: "docs"
 rmd_files: [
   "index.Rmd",
   "lessons/basics/basics.Rmd",
