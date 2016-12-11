@@ -8,7 +8,7 @@ set -e
 git config --global user.email "ellisvalentiner@gmail.com"
 git config --global user.name "Ellis Valentiner"
 
-git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git book-output
+git clone -b gh-pages https://${GITHUB_PAT}@github.com/AnnArborRUserGroup/BeginnerWorkshop.git book-output
 cd book-output
 cp -r ../_book/* ./
 git add --all *
