@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Beginner R Workshop</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Beginner R Workshop" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Beginner R Workshop" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Ann Arbor R User Group">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="4-1-built-in-plotting-functions.html">
+<link rel="next" href="4-3-additional-resources.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Beginner Workshop</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i>Requirements</a><ul>
+<li class="chapter" data-level="" data-path="requirements.html"><a href="requirements.html#r-and-rstudio"><i class="fa fa-check"></i>R and RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="slack.html"><a href="slack.html"><i class="fa fa-check"></i>Slack</a></li>
+<li class="chapter" data-level="" data-path="authors-and-contributors.html"><a href="authors-and-contributors.html"><i class="fa fa-check"></i>Authors and Contributors</a><ul>
+<li class="chapter" data-level="" data-path="authors-and-contributors.html"><a href="authors-and-contributors.html#contributors"><i class="fa fa-check"></i>Contributors</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-basics-of-r.html"><a href="1-basics-of-r.html"><i class="fa fa-check"></i><b>1</b> Basics of R</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-1-awesome-r-tools.html"><a href="1-1-awesome-r-tools.html"><i class="fa fa-check"></i><b>1.1</b> Awesome R tools</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="1-1-awesome-r-tools.html"><a href="1-1-awesome-r-tools.html#knitrr-markdown"><i class="fa fa-check"></i><b>1.1.1</b> Knitr/R-markdown</a></li>
+<li class="chapter" data-level="1.1.2" data-path="1-1-awesome-r-tools.html"><a href="1-1-awesome-r-tools.html#shiny"><i class="fa fa-check"></i><b>1.1.2</b> Shiny</a></li>
+<li class="chapter" data-level="1.1.3" data-path="1-1-awesome-r-tools.html"><a href="1-1-awesome-r-tools.html#rstudio"><i class="fa fa-check"></i><b>1.1.3</b> RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="1-2-interacting-with-r.html"><a href="1-2-interacting-with-r.html"><i class="fa fa-check"></i><b>1.2</b> Interacting with R</a></li>
+<li class="chapter" data-level="1.3" data-path="1-3-seeking-help.html"><a href="1-3-seeking-help.html"><i class="fa fa-check"></i><b>1.3</b> Seeking help</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="1-3-seeking-help.html"><a href="1-3-seeking-help.html#i-know-the-name-of-the-function-i-want-to-use-but-im-not-sure-how-to-use-it"><i class="fa fa-check"></i><b>1.3.1</b> I know the name of the function I want to use, but I’m not sure how to use it</a></li>
+<li class="chapter" data-level="1.3.2" data-path="1-3-seeking-help.html"><a href="1-3-seeking-help.html#i-want-to-use-a-function-that-does-x-there-must-be-a-function-for-it-but-i-dont-know-which-one"><i class="fa fa-check"></i><b>1.3.2</b> I want to use a function that does X, there must be a function for it but I don’t know which one…</a></li>
+<li class="chapter" data-level="1.3.3" data-path="1-3-seeking-help.html"><a href="1-3-seeking-help.html#i-am-stuck-i-get-an-error-message-that-i-dont-understand"><i class="fa fa-check"></i><b>1.3.3</b> I am stuck… I get an error message that I don’t understand</a></li>
+<li class="chapter" data-level="1.3.4" data-path="1-3-seeking-help.html"><a href="1-3-seeking-help.html#asking-for-help"><i class="fa fa-check"></i><b>1.3.4</b> Asking for help</a></li>
+<li class="chapter" data-level="1.3.5" data-path="1-3-seeking-help.html"><a href="1-3-seeking-help.html#where-to-ask-for-help"><i class="fa fa-check"></i><b>1.3.5</b> Where to ask for help?</a></li>
+<li class="chapter" data-level="1.3.6" data-path="1-3-seeking-help.html"><a href="1-3-seeking-help.html#more-resources"><i class="fa fa-check"></i><b>1.3.6</b> More resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-extending-r-with-packages.html"><a href="2-extending-r-with-packages.html"><i class="fa fa-check"></i><b>2</b> Extending R with Packages</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-1-installation.html"><a href="2-1-installation.html"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-loading.html"><a href="2-2-loading.html"><i class="fa fa-check"></i><b>2.2</b> Loading</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-r-markdown.html"><a href="3-r-markdown.html"><i class="fa fa-check"></i><b>3</b> R Markdown</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-1-my-first-rmd.html"><a href="3-1-my-first-rmd.html"><i class="fa fa-check"></i><b>3.1</b> My First Rmd</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="3-1-my-first-rmd.html"><a href="3-1-my-first-rmd.html#header"><i class="fa fa-check"></i><b>3.1.1</b> Header</a></li>
+<li class="chapter" data-level="3.1.2" data-path="3-1-my-first-rmd.html"><a href="3-1-my-first-rmd.html#section-titles"><i class="fa fa-check"></i><b>3.1.2</b> Section Titles</a></li>
+<li class="chapter" data-level="3.1.3" data-path="3-1-my-first-rmd.html"><a href="3-1-my-first-rmd.html#link"><i class="fa fa-check"></i><b>3.1.3</b> Link</a></li>
+<li class="chapter" data-level="3.1.4" data-path="3-1-my-first-rmd.html"><a href="3-1-my-first-rmd.html#bolditalic-text"><i class="fa fa-check"></i><b>3.1.4</b> Bold/Italic Text</a></li>
+<li class="chapter" data-level="3.1.5" data-path="3-1-my-first-rmd.html"><a href="3-1-my-first-rmd.html#code-chunks"><i class="fa fa-check"></i><b>3.1.5</b> Code Chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="3-2-digging-deeper.html"><a href="3-2-digging-deeper.html"><i class="fa fa-check"></i><b>3.2</b> Digging Deeper</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-data-visualization.html"><a href="4-data-visualization.html"><i class="fa fa-check"></i><b>4</b> Data visualization</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-1-built-in-plotting-functions.html"><a href="4-1-built-in-plotting-functions.html"><i class="fa fa-check"></i><b>4.1</b> Built in plotting functions</a><ul>
+<li class="chapter" data-level="" data-path="4-1-built-in-plotting-functions.html"><a href="4-1-built-in-plotting-functions.html#scatter-plot"><i class="fa fa-check"></i>Scatter plot</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="4-2-ggplot2.html"><a href="4-2-ggplot2.html"><i class="fa fa-check"></i><b>4.2</b> <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="4.2.1" data-path="4-2-ggplot2.html"><a href="4-2-ggplot2.html#scales"><i class="fa fa-check"></i><b>4.2.1</b> Scales</a></li>
+<li class="chapter" data-level="4.2.2" data-path="4-2-ggplot2.html"><a href="4-2-ggplot2.html#themes"><i class="fa fa-check"></i><b>4.2.2</b> Themes</a></li>
+<li class="chapter" data-level="4.2.3" data-path="4-2-ggplot2.html"><a href="4-2-ggplot2.html#facets"><i class="fa fa-check"></i><b>4.2.3</b> Facets</a></li>
+<li class="chapter" data-level="4.2.4" data-path="4-2-ggplot2.html"><a href="4-2-ggplot2.html#writing-figures-to-file"><i class="fa fa-check"></i><b>4.2.4</b> Writing figures to file</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="4-3-additional-resources.html"><a href="4-3-additional-resources.html"><i class="fa fa-check"></i><b>4.3</b> Additional resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/AnnArborRUserGroup/BeginnerWorkshop" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Beginner R Workshop</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ggplot2" class="section level2">
+<h2><span class="header-section-number">4.2</span> <code>ggplot2</code></h2>
+<p>More recently, R users have moved away from base graphic options and towards a plotting package called <code>ggplot2</code> that adds a lot of functionality to the basic plots seen above. The syntax is different but it’s extremely powerful and flexible. We can start by re-creating some of the above plots but using ggplot functions to get a feel for the syntax.</p>
+<p>Install and load the <code>ggplot2</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages(&quot;ggplot2&quot;)</span>
+<span class="kw">library</span>(ggplot2)</code></pre></div>
+<p>The <code>ggplot()</code> function is used to initialize the basic graph structure, then we add to it. The basic idea is that you specify different parts of the plot, and add them together using the + operator.</p>
+<p>We will start with a blank plot and will find that you will get an error, because you need to add layers.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(cats)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Geometric objects are the actual marks we put on a plot. Examples include:</p>
+<ul>
+<li>points (geom_point, for scatter plots, dot plots, etc)</li>
+<li>lines (geom_line, for time series, trend lines, etc)</li>
+<li>boxplot (geom_boxplot, for, well, boxplots!)</li>
+</ul>
+<p>A plot must have at least one geom; there is no upper limit. You can add a geom to a plot using the <code>+</code> operator.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(cats) +
+<span class="st">    </span><span class="kw">geom_point</span>()</code></pre></div>
+<p>Each type of geom usually has a required set of aesthetics to be set, and usually accepts only a subset of all aesthetics –refer to the geom help pages to see what mappings each geom accepts. Aesthetic mappings are set with the <code>aes()</code> function.</p>
+<p>Examples include:</p>
+<ul>
+<li>position (i.e., on the x and y axes)</li>
+<li>color (“outside” color)</li>
+<li>fill (“inside” color) shape (of points)</li>
+<li>linetype</li>
+<li>size</li>
+</ul>
+<p>To start, we will add position for the x- and y-axis since geom_point requires mappings for x and y, all others are optional.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(cats) +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> weight),
+               <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>,
+               <span class="dt">alpha =</span> <span class="fl">0.5</span>,
+               <span class="dt">shape =</span> <span class="dv">1</span>,
+               <span class="dt">size =</span> <span class="dv">3</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="scales" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Scales</h3>
+<p>Scales control the mapping between data and aesthetics.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(cats) +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> weight)) +
+<span class="st">    </span><span class="kw">scale_x_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Age&quot;</span>,
+                       <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),
+                       <span class="dt">limits =</span> <span class="kw">c</span>(-<span class="dv">5</span>, <span class="dv">15</span>)) +
+<span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="st">&quot;Weight&quot;</span>, <span class="dt">trans =</span> <span class="st">&quot;log&quot;</span>) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">ggtitle</span>(<span class="dt">label =</span> <span class="st">&quot;Scatterplot&quot;</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="themes" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Themes</h3>
+<p>The ggplot2 theme system handles non-data plot elements such as:</p>
+<ul>
+<li>Axis labels</li>
+<li>Plot background</li>
+<li>Facet label backround</li>
+<li>Legend appearance</li>
+</ul>
+<p>There are built-in themes we can use, or we can adjust specific elements. We can add additional aesthetics by mapping them to other variables in our dataframe. For example, the color of the boxplots will reflect low birth weight.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(cats) +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> weight)) +
+<span class="st">    </span><span class="kw">theme_bw</span>()</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="facets" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> Facets</h3>
+<p>Facets display subsets of the dataset in different panels. Let’s use the <code>facet_grid</code> function to lay out panels in a grid. Each panel will have the same geometric objects.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(cats) +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> weight)) +
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Mother&#39;s age&quot;</span>) +
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Birth weight&quot;</span>) +
+<span class="st">    </span><span class="kw">facet_grid</span>(. ~<span class="st"> </span>coat) +
+<span class="st">    </span><span class="kw">theme_linedraw</span>()</code></pre></div>
+<p><img src="_main_files/figure-html/%7D-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Here we have two panels one for each factor level of <code>coat</code>. The panels are layed out in columns because the expression <code>. ~ coat</code></p>
+</div>
+<div id="writing-figures-to-file" class="section level3">
+<h3><span class="header-section-number">4.2.4</span> Writing figures to file</h3>
+<p>There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen).</p>
+<p>The first (and easiest) is to export directly from the RStudio ‘Plots’ panel, by clicking on Export when the image is plotted. This will give you the option of png or pdf and selecting the directory to which you wish to save it to.</p>
+<p>The second option is to use R functions in the console, allowing you the flexibility to specify parameters to dictate the size and resolution of the output image. Some of the more popular formats include <code>pdf()</code>, <code>png</code>, and <code>svg</code>.</p>
+<p>Initialize a plot that will be written directly to a file using <code>pdf</code>, <code>png</code> etc. Within the function you will need to specify a name for your image, and the with and height (optional). Then create a plot using the usual functions in R. Finally, close the file using the <code>dev.off()</code> function. There are also <code>bmp</code>, <code>tiff</code>, and <code>jpeg</code> functions, though the <code>jpeg</code> function has proven less stable than the others.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pdf</span>(<span class="st">&quot;figure/boxplot.pdf&quot;</span>)
+
+<span class="kw">ggplot</span>(example_data) +
+<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cit, <span class="dt">y =</span>....) +
+<span class="st">  </span><span class="kw">ggtitle</span>(...) +
+<span class="st">  </span><span class="kw">xlab</span>(...) +
+<span class="st">  </span><span class="kw">ylab</span>(...) +
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(...),
+          <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(...),
+          <span class="dt">axis.title =</span> <span class="kw">element_text</span>(...),
+          <span class="dt">axis.text =</span> <span class="kw">element_text</span>(...)
+
+<span class="kw">dev.off</span>()</code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="4-1-built-in-plotting-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-3-additional-resources.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "night",
+"family": "sans",
+"size": 1.5
+},
+"edit": {
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/data-visualization/ggplot2.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

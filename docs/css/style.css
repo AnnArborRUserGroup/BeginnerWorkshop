@@ -1,3 +1,8 @@
+.learning-objectives {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5 5px center/3em no-repeat;
+}
 
 .book .book-body .page-wrapper .page-inner{
  max-width: 1200px; 

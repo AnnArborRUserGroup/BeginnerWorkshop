@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="1-2-interacting-with-r.html">
-<link rel="next" href="2-vectors-and-data-types.html">
+<link rel="prev" href="5-1-my-first-rmd.html">
+<link rel="next" href="6-data-visualization.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -195,75 +195,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="seeking-help" class="section level2">
-<h2><span class="header-section-number">1.3</span> Seeking help</h2>
-<div id="i-know-the-name-of-the-function-i-want-to-use-but-im-not-sure-how-to-use-it" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> I know the name of the function I want to use, but I’m not sure how to use it</h3>
-<p>If you need help with a specific function, let’s say <code>barplot()</code>, you can type:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?barplot</code></pre></div>
-<p>If you just need to remind yourself of the names of the arguments, you can use:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">args</span>(lm)</code></pre></div>
-<p>If the function is part of a package that is installed on your computer but don’t remember which one, you can type:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">??geom_point</code></pre></div>
-</div>
-<div id="i-want-to-use-a-function-that-does-x-there-must-be-a-function-for-it-but-i-dont-know-which-one" class="section level3">
-<h3><span class="header-section-number">1.3.2</span> I want to use a function that does X, there must be a function for it but I don’t know which one…</h3>
-<p>If you are looking for a function to do a particular task, you can use <code>help.search()</code> (but only looks through the installed packages):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help.search</span>(<span class="st">&quot;kruskal&quot;</span>)</code></pre></div>
-<p>If you can’t find what you are looking for, you can use the <a href="http://www.rdocumentation.org">rdocumention.org</a> website that search through the help files across all packages available.</p>
-</div>
-<div id="i-am-stuck-i-get-an-error-message-that-i-dont-understand" class="section level3">
-<h3><span class="header-section-number">1.3.3</span> I am stuck… I get an error message that I don’t understand</h3>
-<p>Start by googling the error message. However, this doesn’t always work very well because often, package developers rely on the error catching provided by R. You end up with general error messages that might not be very helpful to diagnose a problem (e.g. “subscript out of bounds”).</p>
-<p>However, you should check stackoverflow. Search using the <code>[r]</code> tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: <a href="http://stackoverflow.com/questions/tagged/r" class="uri">http://stackoverflow.com/questions/tagged/r</a></p>
-<p>The <a href="http://cran.r-project.org/doc/manuals/R-intro.pdf">Introduction to R</a> can also be dense for people with little programming experience but it is a good place to understand the underpinnings of the R language.</p>
-<p>The <a href="http://cran.r-project.org/doc/FAQ/R-FAQ.html">R FAQ</a> is dense and technical but it is full of useful information.</p>
-</div>
-<div id="asking-for-help" class="section level3">
-<h3><span class="header-section-number">1.3.4</span> Asking for help</h3>
-<p>The key to get help from someone is for them to grasp your problem rapidly. You should make it as easy as possible to pinpoint where the issue might be.</p>
-<p>Try to use the correct words to describe your problem. For instance, a package is not the same thing as a library. Most people will understand what you meant, but others have really strong feelings about the difference in meaning. The key point is that it can make things confusing for people trying to help you. Be as precise as possible when describing your problem</p>
-<p>If possible, try to reduce what doesn’t work to a simple reproducible example. If you can reproduce the problem using a very small <code>data.frame</code> instead of your 50,000 rows and 10,000 columns one, provide the small one with the description of your problem. When appropriate, try to generalize what you are doing so even people who are not in your field can understand the question.</p>
-<p>If you want to share your object, provide either the raw file (i.e., your CSV file) with your script up to the point of the error (and after removing everything that is not relevant to your issue). Alternatively, in particular if your questions is not related to a <code>data.frame</code>, you can save any R object to a file:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">saveRDS</span>(iris, <span class="dt">file=</span><span class="st">&quot;/tmp/iris.rds&quot;</span>)</code></pre></div>
-<p>The content of this file is however not human readable and cannot be posted directly on stackoverflow. It can however be sent to someone by email who can read it with this command:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">some_data &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="dt">file=</span><span class="st">&quot;~/Downloads/iris.rds&quot;</span>)</code></pre></div>
-<p>Last, but certainly not least, <strong>always include the output of <code>sessionInfo()</code></strong> as it provides critical information about your platform, the versions of R and the packages that you are using, and other information that can be very helpful to understand your problem.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
-<pre><code>## R version 3.3.2 (2016-10-31)
-## Platform: x86_64-apple-darwin16.1.0 (64-bit)
-## Running under: macOS Sierra 10.12.1
-## 
-## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-## 
-## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets  methods   base     
-## 
-## loaded via a namespace (and not attached):
-##  [1] backports_1.0.4 bookdown_0.3    magrittr_1.5    rprojroot_1.1  
-##  [5] tools_3.3.2     htmltools_0.3.5 rstudioapi_0.6  yaml_2.1.14    
-##  [9] Rcpp_0.12.8     stringi_1.1.2   rmarkdown_1.2   knitr_1.15.1   
-## [13] stringr_1.1.0   digest_0.6.10   evaluate_0.10</code></pre>
-</div>
-<div id="where-to-ask-for-help" class="section level3">
-<h3><span class="header-section-number">1.3.5</span> Where to ask for help?</h3>
-<ul>
-<li>Your friendly colleagues: if you know someone with more experience than you, they might be able and willing to help you.</li>
-<li>Stackoverflow: if your question hasn’t been answered before and is well crafted, chances are you will get an answer in less than 5 min.</li>
-<li>The <a href="https://stat.ethz.ch/mailman/listinfo/r-help">R-help</a>: it is read by a lot of people (including most of the R core team), a lot of people post to it, but the tone can be pretty dry, and it is not always very welcoming to new users. If your question is valid, you are likely to get an answer very fast but don’t expect that it will come with smiley faces. Also, here more than everywhere else, be sure to use correct vocabulary (otherwise you might get an answer pointing to the misuse of your words rather than answering your question). You will also have more success if your question is about a base function rather than a specific package.</li>
-<li>If your question is about a specific package, see if there is a mailing list for it. Usually it’s included in the DESCRIPTION file of the package that can be accessed using <code>packageDescription(&quot;name-of-package&quot;)</code>. You may also want to try to email the author of the package directly.</li>
-<li>There are also some topic-specific mailing lists (GIS, phylogenetics, etc…), the complete list is <a href="http://www.r-project.org/mail.html">here</a>.</li>
-</ul>
-</div>
-<div id="more-resources" class="section level3">
-<h3><span class="header-section-number">1.3.6</span> More resources</h3>
-<ul>
-<li>The <a href="http://www.r-project.org/posting-guide.html">Posting Guide</a> for the R mailing lists.</li>
-<li><a href="http://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html">How to ask for R help</a> useful guidelines</li>
-</ul>
+<div id="digging-deeper" class="section level2">
+<h2><span class="header-section-number">5.2</span> Digging Deeper</h2>
+<p>There’s a lot more to RMarkdown than just this; as the demo document shows, you can visit <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a> to learn more.</p>
+<p>We’ll be using R Markdown for the rest of this workshop to keep a running log of what we’re learning. This will allow you to walk away with a knit document which has not only the code commands you’ve learned to use, but the output of those commands and some explanatory text. That’s literate programming!</p>
 
-</div>
 </div>
 <!-- </div> -->
             </section>
@@ -271,8 +207,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="1-2-interacting-with-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-vectors-and-data-types.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="5-1-my-first-rmd.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-data-visualization.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -300,7 +236,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/basics/basics.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/packages-and-rmarkdown/rmarkdown.Rmd",
 "text": "Edit"
 },
 "download": null,

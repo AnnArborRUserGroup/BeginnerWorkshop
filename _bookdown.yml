@@ -5,5 +5,9 @@ output_dir: "docs"
 rmd_files: [
   "index.Rmd",
   "lessons/basics/basics.Rmd",
+  "lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+  "lessons/dataframes/dataframes.Rmd",
+  "lessons/packages-and-rmarkdown/packages.Rmd",
+  "lessons/packages-and-rmarkdown/rmarkdown.Rmd",
   "lessons/data-visualization/ggplot2.Rmd"
   ]
