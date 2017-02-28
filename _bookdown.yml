@@ -8,6 +8,6 @@ rmd_files: [
   "lessons/dataframes/dataframes.Rmd",
   "lessons/packages-and-rmarkdown/packages.Rmd",
   "lessons/packages-and-rmarkdown/rmarkdown.Rmd",
-  "lessons/dplyr/dplyr.Rmd"
+  "lessons/dplyr/dplyr.Rmd",
   "lessons/data-visualization/ggplot2.Rmd"
   ]
