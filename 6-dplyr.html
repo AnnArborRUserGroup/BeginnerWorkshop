@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="contributing.html">
-<link rel="next" href="1-1-awesome-r-tools.html">
+<link rel="prev" href="5-2-digging-deeper.html">
+<link rel="next" href="6-1-getting-the-package.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -212,26 +212,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="basics-of-r" class="section level1">
-<h1><span class="header-section-number">Lesson 1</span> Basics of R</h1>
-<hr />
-<blockquote>
-<h2 id="learning-objectives" class="unnumbered">Learning Objectives</h2>
+<div id="dplyr" class="section level1">
+<h1><span class="header-section-number">Lesson 6</span> <code>dplyr</code></h1>
+<p>80% of the work involved with data analysis involves cleaning and shaping the data until it’s in the state you need. Bracket subsetting is handy, but it can be cumbersome and difficult to read, especially for complicated operations. Enter <code>dplyr</code>!</p>
+<p><code>dplyr</code> is a package for making data manipulation easier. (It does a lot more too, but this is what we’ll focus on).</p>
+<p>Unlike the subsetting commands we’ve already worked on, <code>dplyr</code> is designed to be highly expressive, and highly readable. It’s structured around a set of verbs, or grammar of data manipulation. The core functions we’ll talk about are below:</p>
 <ul>
-<li>Articulating motivations for using R</li>
-<li>Introduce participants to the RStudio interface</li>
-<li>Point to relevant information on how to get help, and understand how to ask well formulated questions</li>
-</ul>
-</blockquote>
-<hr />
-<p>R is a versatile, open source programming/scripting language that’s useful both for statistics but also data science. Inspired by the programming language S.</p>
-<ul>
-<li>Open source software under GPL.</li>
-<li>Superior (if not just comparable) to commercial alternatives. R has over 7,000 user contributed packages at this time. It’s widely used both in academia and industry.</li>
-<li>Available on all platforms.</li>
-<li>Not just for statistics, but also general purpose programming.</li>
-<li>For people who have experience in programmming: R is both an object-oriented and a so-called <a href="http://adv-r.had.co.nz/Functional-programming.html">functional language</a></li>
-<li>Large and growing community of peers.</li>
+<li><code>select</code></li>
+<li><code>arrange</code></li>
+<li><code>filter</code></li>
+<li><code>group_by</code></li>
+<li><code>mutate</code></li>
+<li><code>summarise/summarize</code></li>
 </ul> 
 </div>
             </section>
@@ -239,8 +231,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="contributing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="1-1-awesome-r-tools.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="5-2-digging-deeper.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-1-getting-the-package.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -268,7 +260,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/basics/basics.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/dplyr/dplyr.Rmd",
 "text": "Edit"
 },
 "download": null,

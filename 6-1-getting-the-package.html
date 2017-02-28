@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="contributing.html">
-<link rel="next" href="1-1-awesome-r-tools.html">
+<link rel="prev" href="6-dplyr.html">
+<link rel="next" href="6-2-subsetting-data.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -212,35 +212,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="basics-of-r" class="section level1">
-<h1><span class="header-section-number">Lesson 1</span> Basics of R</h1>
-<hr />
-<blockquote>
-<h2 id="learning-objectives" class="unnumbered">Learning Objectives</h2>
-<ul>
-<li>Articulating motivations for using R</li>
-<li>Introduce participants to the RStudio interface</li>
-<li>Point to relevant information on how to get help, and understand how to ask well formulated questions</li>
-</ul>
-</blockquote>
-<hr />
-<p>R is a versatile, open source programming/scripting language that’s useful both for statistics but also data science. Inspired by the programming language S.</p>
-<ul>
-<li>Open source software under GPL.</li>
-<li>Superior (if not just comparable) to commercial alternatives. R has over 7,000 user contributed packages at this time. It’s widely used both in academia and industry.</li>
-<li>Available on all platforms.</li>
-<li>Not just for statistics, but also general purpose programming.</li>
-<li>For people who have experience in programmming: R is both an object-oriented and a so-called <a href="http://adv-r.had.co.nz/Functional-programming.html">functional language</a></li>
-<li>Large and growing community of peers.</li>
-</ul> 
+<div id="getting-the-package" class="section level2">
+<h2><span class="header-section-number">6.1</span> Getting the package</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
+<p>Again, you may be asked to choose a CRAN mirror; RStudio is a good choice.</p>
+<p>Unlike the <code>rmarkdown</code> package, we’ll be using <code>dplyr</code> in the console. In order to do that, we need to <em>load</em> the package into our environment so we can access functions from <code>dplyr</code>. We do this with the <code>library</code> command:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
+<p>You only need to install a package once per computer, but you need to load it every time you open a new R session and want to use that package.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="contributing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="1-1-awesome-r-tools.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="6-dplyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-2-subsetting-data.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -268,7 +254,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/basics/basics.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/dplyr/dplyr.Rmd",
 "text": "Edit"
 },
 "download": null,

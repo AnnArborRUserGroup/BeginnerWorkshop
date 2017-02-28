@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="contributing.html">
-<link rel="next" href="1-1-awesome-r-tools.html">
+<link rel="prev" href="6-1-getting-the-package.html">
+<link rel="next" href="6-3-pipes.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -212,35 +212,54 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="basics-of-r" class="section level1">
-<h1><span class="header-section-number">Lesson 1</span> Basics of R</h1>
-<hr />
-<blockquote>
-<h2 id="learning-objectives" class="unnumbered">Learning Objectives</h2>
-<ul>
-<li>Articulating motivations for using R</li>
-<li>Introduce participants to the RStudio interface</li>
-<li>Point to relevant information on how to get help, and understand how to ask well formulated questions</li>
-</ul>
-</blockquote>
-<hr />
-<p>R is a versatile, open source programming/scripting language that’s useful both for statistics but also data science. Inspired by the programming language S.</p>
-<ul>
-<li>Open source software under GPL.</li>
-<li>Superior (if not just comparable) to commercial alternatives. R has over 7,000 user contributed packages at this time. It’s widely used both in academia and industry.</li>
-<li>Available on all platforms.</li>
-<li>Not just for statistics, but also general purpose programming.</li>
-<li>For people who have experience in programmming: R is both an object-oriented and a so-called <a href="http://adv-r.had.co.nz/Functional-programming.html">functional language</a></li>
-<li>Large and growing community of peers.</li>
-</ul> 
+<div id="subsetting-data" class="section level2">
+<h2><span class="header-section-number">6.2</span> Subsetting Data</h2>
+<p>The first two <code>dplyr</code> commands we’ll use help us to subset our data by rows and columns.</p>
+<div id="select" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> <code>select</code></h3>
+<p>The first command we’ll use is <code>select</code>, which allows us to choose columns from our dataset. Let’s use our <code>cats</code> dataset and select only the <code>coat</code> column; we did this previously with</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[, <span class="st">&quot;coat&quot;</span>]</code></pre></div>
+<p>With dplyr, we don’t need to enclose our column names in quotes</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(cats, coat)</code></pre></div>
+<p>Notice how the output differs slightly; all the main <code>dplyr</code> verbs behave consistently in that their inputs and outputs are both <code>data.frame</code>s, rather than returning a simple vector as the bracket-indexing method did. All of the main “verbs” we’ll talk about will return a data.frame as their result.</p>
+<p>We can select more columns by giving <code>select</code> additional arguments, and our output <code>data.frame</code> will have columns according to the order of our arguments</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(cats, coat, cat_id)</code></pre></div>
+</div>
+<div id="filter" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> <code>filter</code></h3>
+<p>So where <code>select</code> allowed us to select <em>columns</em>, <code>filter</code> operated on <em>rows</em>. Say we want to see the all the cats with black coats; we saw earlier how to use that using bracket-indexing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[cats$coat ==<span class="st"> &quot;black&quot;</span>, ]</code></pre></div>
+<p>In dplyr, this looks like</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(cats, coat ==<span class="st"> &quot;black&quot;</span>)</code></pre></div>
+<p>Notice we don’t have to use the <code>$</code> operator to tell <code>filter</code> where the <code>coat</code> column is; it’s smart enough to assume we want the <code>coat</code> column from the <code>data.frame</code> we passed in.</p>
+</div>
+<div id="arrange" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> <code>arrange</code></h3>
+<p>Maybe you have a set of observations in your data that you want to organize by their value. <code>arrange</code> allows us to change the order of rows in our dataset based on their values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">arrange</span>(cats, coat)
+
+<span class="co"># you can include additional columns to help sort the data</span>
+<span class="kw">arrange</span>(cats, coat, sex)</code></pre></div>
+</div>
+<div id="mutate" class="section level3">
+<h3><span class="header-section-number">6.2.4</span> <code>mutate</code></h3>
+<p>One common task in working with data is updating/cleaning some of the values in columns. <code>mutate</code> allows us to do this relatively easily. Let’s say I don’t want a lot of decimal places in one of my measurements. I can use <code>mutate</code> to update my existing variable:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mutate</span>(cats, <span class="dt">weight =</span> <span class="kw">round</span>(weight, <span class="dv">2</span>))</code></pre></div>
+<p>Another common task is generating a new column based on values that are already in the dataset you are working on. <code>mutate</code> helps us do this, and tacks a new column to the end of our data.frame.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># let&#39;s say you want to add two variables together</span>
+<span class="kw">mutate</span>(cats, <span class="dt">new_variable =</span> age +<span class="st"> </span>weight)
+
+<span class="co"># you can include as many new variables as you want, separated by a comma</span>
+<span class="kw">mutate</span>(cats, <span class="dt">new_var_1 =</span> age +<span class="st"> </span>weight, <span class="dt">new_var_2 =</span> age *<span class="st"> </span>weight)</code></pre></div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="contributing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="1-1-awesome-r-tools.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="6-1-getting-the-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-3-pipes.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -268,7 +287,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/basics/basics.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/dplyr/dplyr.Rmd",
 "text": "Edit"
 },
 "download": null,
