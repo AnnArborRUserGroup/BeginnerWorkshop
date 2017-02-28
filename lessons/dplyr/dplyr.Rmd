@@ -120,14 +120,14 @@ It's written as `%>%`, and you can call it the "pipe" operator.
 
 Our example above can be re-written as:
 ```{r}
-cats$age * 2 %>% 
+cats$age %>% 
   sqrt() %>%
   round(3) %>%
   sort()
 ```
 
 Instead of being nested within a bunch of commands, you can see read the code as a series of statements:
-  1. Multiply `cats$age` by 2, *then*
+  1. With the ages of all the cats,
   2. Take the square-root of these values, *then*
   3. Round the result to the 3rd digit, *then*
   4. Sort the values in ascending order
