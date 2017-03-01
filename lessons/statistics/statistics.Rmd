@@ -4,7 +4,7 @@
 library(MASS)
 library(dplyr)
 library(ggplot2)
-knitr::opts_chunk$set(comment = '', fig.height = 8, fig.width = 10, fig.align = 'center')
+knitr::opts_chunk$set(comment = '', fig.height = 6, fig.width = 8, fig.align = 'center')
 ```
 
 ------------
@@ -18,7 +18,7 @@ knitr::opts_chunk$set(comment = '', fig.height = 8, fig.width = 10, fig.align = 
 
 ------------
 
-### Simple Linear Regression
+## Simple Linear Regression
 
 ```{r, echo = FALSE, message = FALSE}
 
@@ -50,7 +50,7 @@ In this case, the `summary` function returns an object that provides a lot of in
   
 ------------
 
-### Multiple Linear Regression
+## Multiple Linear Regression
 
 We aren't restricted to just one explanatory variable in linear regression.  We can test the effect of a linear relationship between multiple explanatory variables _simultaneously_.  In the `lm` function, we just add extra variable names in the formula separated by `+`'s.
 
@@ -61,17 +61,6 @@ summary(wander_fit)
 
 ------------
 
-> ### Challenge
-> 
-> Fit a model predicting wander_dist and include weight, age, and fixed as predictors. What is the estimate for the effect of being fixed on the wandering distance?
-> 
-
-```{r}
-wander_fit <- lm(formula = wander_dist ~ weight + age + fixed, data = cats)
-summary(wander_fit)
-```
-------------
-
 If an explanatory variable is not binary (coded as 0s or 1s), we can still include it in the model.  The `lm` function understands factors to be categorical variables automatically and will output the estimates with a reference category.
 
 ```{r}
@@ -80,25 +69,9 @@ summary_fit <- summary(wander_fit)
 summary_fit['coefficients']
 ```
 
-> ### Challenge
-> What command will return the r-squared value from the summary_lm_fit object after running these commands:
-> 
-> wander_fit <- lm(formula = wander_dist ~ weight + age + fixed, data = cats)
-> summary_lm_fit <- summary(wander_fit)
-
-
 ------------
 
 The `lm` function also can estimate interactions between explanatory variables.  This is useful if we think that the linear relationship between our outcome y and a variable x1 is _different_ depending on the variable x2.  This can be accomplished by connecting two variables in the formula with a `*` instead of a `+`.
-
-> ### Challenge 
-> Fit a linear regression model estimating the relationship between the outcome, wandering distance (`wander_dist`) and explanatory variables age (`age`), weight (`weight`), with an interaction between age and weight. What is the coefficient associated with the interaction between age and weight?
->
-
-```{r}
-wander_fit <- lm(formula = wander_dist ~ weight * age, data = cats)
-summary(wander_fit)
-```
 
 ## Logistic Regression
 
@@ -126,13 +99,6 @@ glm_summary <- summary(roamer_fit)
 glm_summary
 ```
 
-> ### Challenge
-> 
-
-```{r}
-roamer_fit <- glm(formula = roamer ~ wander_dist + weight, data = cats, family = binomial )
-summary(roamer_fit)
-```
 ------------
 
 We can look at the effects of multiple covariates on our binary outcome with logistic regression, just like with linear regression.  We just add as many variable names as we'd like to the right side of the formula argument, separated by `+` symbols.
@@ -193,18 +159,18 @@ Another popular machine learning technique is k-means clustering.  It seeks to g
 
 ```{r kmeans1}
 cats <- cats %>% 
-  mutate(scale_weight = scale(weight),
-         scale_wander = scale(wander_dist),
-         scale_age = scale(age))
+  mutate(scale_weight = scale(weight) %>% as.numeric,
+         scale_wander = scale(wander_dist) %>% as.numeric,
+         scale_age = scale(age) %>% as.numeric)
 ```
 
 ------------
 
 We use the `kmeans` function to perform the clustering, and need to pass it a data frame, the number of centers we want, and another argument `nstart`, which helps get around some numerical issues if the algorithm gets stuck in a local extrema.
 
-```{r kmeans2, eval=FALSE}
+```{r kmeans2}
 cats_cluster <- 
-  kmeans(x = cats %>% select(scale_weight, scale_wander, scale_age), 
+  kmeans(x = cats %>% dplyr::select(scale_weight, scale_wander, scale_age), 
          centers = 3,
          nstart = 20)
 str(cats_cluster)
@@ -215,7 +181,7 @@ cats_cluster$centers
 
 We can use `ggplot` to visualize the clusters.
 
-```{r last, eval=FALSE}
+```{r, eval=FALSE}
 cats$cluster <- factor(cats_cluster$cluster)
 cluster_centers <- as.data.frame(cats_cluster$centers)
 
