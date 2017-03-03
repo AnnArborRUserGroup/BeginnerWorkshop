@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="1-basics-of-r.html">
-<link rel="next" href="1-2-interacting-with-r.html">
+<link rel="prev" href="8-1-logistic-regression.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -218,49 +218,51 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="awesome-r-tools" class="section level2">
-<h2><span class="header-section-number">1.1</span> Awesome R tools</h2>
-<div id="knitrr-markdown" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Knitr/R-markdown</h3>
-<p>Knitr is an R library that allows you to create dynamic code reports.</p>
-<p><strong>Example:</strong><br />
-<a href="https://www.buzzfeed.com/peteraldhous/spies-in-the-skies?utm_term=.vw6m6GNwGa#.mwZYqXjQXv">This</a> BuzzFeed article, reporting on government surveillance planes, included all of their <a href="http://buzzfeednews.github.io/2016-04-federal-surveillance-planes/analysis.html">analysis</a> as an R-markdown document.</p>
+<div id="k-means-clustering" class="section level2">
+<h2><span class="header-section-number">8.2</span> K-means Clustering</h2>
+<p>Another popular machine learning technique is k-means clustering. It seeks to group your data into a fixed number of clusters based on a measure of distance. An important pre-processing step to clustering is the center and scale your data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span>cats %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">scale_weight =</span> <span class="kw">as.numeric</span>(<span class="kw">scale</span>(weight)),
+         <span class="dt">scale_wander =</span> <span class="kw">as.numeric</span>(<span class="kw">scale</span>(wander_dist)),
+         <span class="dt">scale_age =</span> <span class="kw">as.numeric</span>(<span class="kw">scale</span>(age)))</code></pre></div>
+<hr />
+<p>We use the <code>kmeans</code> function to perform the clustering, and need to pass it a data frame, the number of centers we want, and another argument <code>nstart</code>, which helps get around some numerical issues if the algorithm gets stuck in a local extrema.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats_cluster &lt;-<span class="st"> </span>
+<span class="st">  </span><span class="kw">kmeans</span>(<span class="dt">x =</span> cats %&gt;%<span class="st"> </span>dplyr::<span class="kw">select</span>(scale_weight, scale_wander, scale_age), 
+         <span class="dt">centers =</span> <span class="dv">3</span>,
+         <span class="dt">nstart =</span> <span class="dv">20</span>)
+<span class="kw">str</span>(cats_cluster)
+cats_cluster$centers</code></pre></div>
+<hr />
+<p>We can use <code>ggplot</code> to visualize the clusters.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$cluster &lt;-<span class="st"> </span><span class="kw">factor</span>(cats_cluster$cluster)
+cluster_centers &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(cats_cluster$centers)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> cats) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_weight, <span class="dt">color =</span> cluster), <span class="dt">size =</span> <span class="dv">4</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> cluster_centers, <span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_weight), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">size  =</span> <span class="dv">8</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">18</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-95-1.png" width="960" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> cats) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_wander, <span class="dt">color =</span> cluster), <span class="dt">size =</span> <span class="dv">4</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> cluster_centers, <span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_wander), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">size  =</span> <span class="dv">8</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">18</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-95-2.png" width="960" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> cats) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> scale_weight, <span class="dt">y =</span> scale_wander, <span class="dt">color =</span> cluster), <span class="dt">size =</span> <span class="dv">4</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> cluster_centers, <span class="kw">aes</span>(<span class="dt">x =</span> scale_weight, <span class="dt">y =</span> scale_wander), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">size  =</span> <span class="dv">8</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">18</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-95-3.png" width="960" style="display: block; margin: auto;" /></p>
+
 </div>
-<div id="shiny" class="section level3">
-<h3><span class="header-section-number">1.1.2</span> Shiny</h3>
-<p>Shiny is a web application framework built for R.</p>
-<p><strong>Example:</strong><br />
-<a href="http://shiny.rstudio.com/gallery/movie-explorer.html">This</a> is a shiny app to visualize and explore a movie dataset.</p>
-</div>
-<div id="rstudio" class="section level3">
-<h3><span class="header-section-number">1.1.3</span> RStudio</h3>
-<p>RStudio is an IDE- an integrated development environment. It allows us to write, execute, and debug R code. It also has several other nice features, accessible through its GUI (graphical user interface), that make it easier to use R.</p>
-<p>RStudio is such a popular tool among R users, that several other languages have tried to emulate it, such as Spyder for Python.</p>
-<p>Start RStudio – Let’s start learning about our tool.</p>
-<p>Rstudio’s layout includes 4 quadrants</p>
-<ul>
-<li>Scripts<br />
-</li>
-<li>Console<br />
-</li>
-<li>Environment/History<br />
-</li>
-<li>Plotting/Packages/Help</li>
-</ul>
-<div class="figure">
-<img src="img/rstudio.png" alt="rstudio-image" />
-<p class="caption">rstudio-image</p>
-</div>
-<p>To adjust the layout of your quadrants go to Preferences &gt; Pane Layout</p>
-</div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="1-basics-of-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="1-2-interacting-with-r.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="8-1-logistic-regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -288,7 +290,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/basics/basics.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/statistics/statistics.Rmd",
 "text": "Edit"
 },
 "download": null,
