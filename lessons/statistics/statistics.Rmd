@@ -193,9 +193,9 @@ Another popular machine learning technique is k-means clustering.  It seeks to g
 
 ```{r}
 cats <- cats %>% 
-  mutate(scale_weight = scale(weight),
-         scale_wander = scale(wander_dist),
-         scale_age = scale(age))
+  mutate(scale_weight = as.numeric(scale(weight)),
+         scale_wander = as.numeric(scale(wander_dist)),
+         scale_age = as.numeric(scale(age)))
 ```
 
 ------------
@@ -215,7 +215,7 @@ cats_cluster$centers
 
 We can use `ggplot` to visualize the clusters.
 
-```{r, eval=FALSE}
+```{r}
 cats$cluster <- factor(cats_cluster$cluster)
 cluster_centers <- as.data.frame(cats_cluster$centers)
 
