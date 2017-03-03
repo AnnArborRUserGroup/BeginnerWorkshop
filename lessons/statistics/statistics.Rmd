@@ -202,9 +202,9 @@ cats <- cats %>%
 
 We use the `kmeans` function to perform the clustering, and need to pass it a data frame, the number of centers we want, and another argument `nstart`, which helps get around some numerical issues if the algorithm gets stuck in a local extrema.
 
-```{r}
+```{r kmeans2}
 cats_cluster <- 
-  kmeans(x = cats %>% select(scale_weight, scale_wander, scale_age), 
+  kmeans(x = cats %>% dplyr::select(scale_weight, scale_wander, scale_age), 
          centers = 3,
          nstart = 20)
 str(cats_cluster)
@@ -215,7 +215,7 @@ cats_cluster$centers
 
 We can use `ggplot` to visualize the clusters.
 
-```{r}
+```{r, eval=FALSE}
 cats$cluster <- factor(cats_cluster$cluster)
 cluster_centers <- as.data.frame(cats_cluster$centers)
 
