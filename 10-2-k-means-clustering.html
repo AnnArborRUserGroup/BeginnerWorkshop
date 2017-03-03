@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-vectors-and-data-types.html">
-<link rel="next" href="2-2-assignment-operator.html">
+<link rel="prev" href="10-1-logistic-regression.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -220,30 +220,51 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="creating-objects" class="section level2">
-<h2><span class="header-section-number">2.1</span> Creating objects</h2>
-<p>You can get output from R simply by typing in math in the console</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span>
-<span class="dv">12</span>/<span class="dv">7</span>
-<span class="dv">2</span>*<span class="dv">4</span>
-<span class="dv">2</span>^<span class="dv">4</span></code></pre></div>
-<p>We can also comment what it is we’re doing</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I am adding 3 and 5. R is fun!</span>
-<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span></code></pre></div>
-<p>What happens if we do that same command without the # sign in the front?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">I am adding <span class="dv">3</span> and <span class="dv">5</span>. R is fun!
-<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span></code></pre></div>
-<p>Now R is trying to run that sentence as a command, and it doesn’t work. Now we’re stuck over in the console. The <code>+</code> sign means that it’s still waiting for input, so we can’t type in a new command. To get out of this type <code>Esc</code>. This will work whenever you’re stuck with that <code>+</code> sign.</p>
-<p>It’s great that R is a glorified caluculator, but obviously we want to do more interesting things.</p>
-<p>To do useful and interesting things, we need to assign <em>values</em> to <em>objects</em>. To create objects, we need to give it a name followed by the assignment operator <code>&lt;-</code> and the value we want to give it.</p>
+<div id="k-means-clustering" class="section level2">
+<h2><span class="header-section-number">10.2</span> K-means Clustering</h2>
+<p>Another popular machine learning technique is k-means clustering. It seeks to group your data into a fixed number of clusters based on a measure of distance. An important pre-processing step to clustering is the center and scale your data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span>cats %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">scale_weight =</span> <span class="kw">as.numeric</span>(<span class="kw">scale</span>(weight)),
+         <span class="dt">scale_wander =</span> <span class="kw">as.numeric</span>(<span class="kw">scale</span>(wander_dist)),
+         <span class="dt">scale_age =</span> <span class="kw">as.numeric</span>(<span class="kw">scale</span>(age)))</code></pre></div>
+<hr />
+<p>We use the <code>kmeans</code> function to perform the clustering, and need to pass it a data frame, the number of centers we want, and another argument <code>nstart</code>, which helps get around some numerical issues if the algorithm gets stuck in a local extrema.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats_cluster &lt;-<span class="st"> </span>
+<span class="st">  </span><span class="kw">kmeans</span>(<span class="dt">x =</span> cats %&gt;%<span class="st"> </span>dplyr::<span class="kw">select</span>(scale_weight, scale_wander, scale_age), 
+         <span class="dt">centers =</span> <span class="dv">3</span>,
+         <span class="dt">nstart =</span> <span class="dv">20</span>)
+<span class="kw">str</span>(cats_cluster)
+cats_cluster$centers</code></pre></div>
+<hr />
+<p>We can use <code>ggplot</code> to visualize the clusters.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$cluster &lt;-<span class="st"> </span><span class="kw">factor</span>(cats_cluster$cluster)
+cluster_centers &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(cats_cluster$centers)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> cats) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_weight, <span class="dt">color =</span> cluster), <span class="dt">size =</span> <span class="dv">4</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> cluster_centers, <span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_weight), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">size  =</span> <span class="dv">8</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">18</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-97-1.png" width="960" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> cats) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_wander, <span class="dt">color =</span> cluster), <span class="dt">size =</span> <span class="dv">4</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> cluster_centers, <span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_wander), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">size  =</span> <span class="dv">8</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">18</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-97-2.png" width="960" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> cats) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> scale_weight, <span class="dt">y =</span> scale_wander, <span class="dt">color =</span> cluster), <span class="dt">size =</span> <span class="dv">4</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> cluster_centers, <span class="kw">aes</span>(<span class="dt">x =</span> scale_weight, <span class="dt">y =</span> scale_wander), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">size  =</span> <span class="dv">8</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">18</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-97-3.png" width="960" style="display: block; margin: auto;" /></p>
+
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-vectors-and-data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-2-assignment-operator.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="10-1-logistic-regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -271,7 +292,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/statistics/statistics.Rmd",
 "text": "Edit"
 },
 "download": null,

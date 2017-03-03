@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-vectors-and-data-types.html">
-<link rel="next" href="2-2-assignment-operator.html">
+<link rel="prev" href="9-2-ggplot2.html">
+<link rel="next" href="10-common-statistical-techniques-in-r.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -220,30 +220,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="creating-objects" class="section level2">
-<h2><span class="header-section-number">2.1</span> Creating objects</h2>
-<p>You can get output from R simply by typing in math in the console</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span>
-<span class="dv">12</span>/<span class="dv">7</span>
-<span class="dv">2</span>*<span class="dv">4</span>
-<span class="dv">2</span>^<span class="dv">4</span></code></pre></div>
-<p>We can also comment what it is we’re doing</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I am adding 3 and 5. R is fun!</span>
-<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span></code></pre></div>
-<p>What happens if we do that same command without the # sign in the front?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">I am adding <span class="dv">3</span> and <span class="dv">5</span>. R is fun!
-<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span></code></pre></div>
-<p>Now R is trying to run that sentence as a command, and it doesn’t work. Now we’re stuck over in the console. The <code>+</code> sign means that it’s still waiting for input, so we can’t type in a new command. To get out of this type <code>Esc</code>. This will work whenever you’re stuck with that <code>+</code> sign.</p>
-<p>It’s great that R is a glorified caluculator, but obviously we want to do more interesting things.</p>
-<p>To do useful and interesting things, we need to assign <em>values</em> to <em>objects</em>. To create objects, we need to give it a name followed by the assignment operator <code>&lt;-</code> and the value we want to give it.</p>
+<div id="additional-resources" class="section level2">
+<h2><span class="header-section-number">9.3</span> Additional resources</h2>
+<p>We only scratched the surface in this section. There are many more <code>ggplot2</code> features we haven’t covered and other packages for data visualization.</p>
+<p>plotting in Base R:</p>
+<ul>
+<li>John Maindonald’s <a href="https://cran.r-project.org/doc/contrib/usingR.pdf">Using R for Data Analysis and Graphics PDF</a></li>
+</ul>
+<p>ggplot2:</p>
+<ul>
+<li><a href="http://docs.ggplot2.org/">ggplot reference site</a></li>
+<li>Winston Chang’s excellent <a href="http://www.cookbook-r.com">Cookbook for R</a></li>
+<li><a href="http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403">ggplot2: Elegant Graphics for Data Anaysis</a></li>
+</ul>
+<p>Much of the material here was adpapted from <a href="http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html">Introduction to R graphics with ggplot2 Tutorial at IQSS</a>.</p>
+
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-vectors-and-data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-2-assignment-operator.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="9-2-ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="10-common-statistical-techniques-in-r.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -271,7 +271,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/data-visualization/ggplot2.Rmd",
 "text": "Edit"
 },
 "download": null,

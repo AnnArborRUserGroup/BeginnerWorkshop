@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-vectors-and-data-types.html">
-<link rel="next" href="2-2-assignment-operator.html">
+<link rel="prev" href="6-r-markdown.html">
+<link rel="next" href="7-1-my-first-rmd.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -220,30 +220,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="creating-objects" class="section level2">
-<h2><span class="header-section-number">2.1</span> Creating objects</h2>
-<p>You can get output from R simply by typing in math in the console</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span>
-<span class="dv">12</span>/<span class="dv">7</span>
-<span class="dv">2</span>*<span class="dv">4</span>
-<span class="dv">2</span>^<span class="dv">4</span></code></pre></div>
-<p>We can also comment what it is we’re doing</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I am adding 3 and 5. R is fun!</span>
-<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span></code></pre></div>
-<p>What happens if we do that same command without the # sign in the front?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">I am adding <span class="dv">3</span> and <span class="dv">5</span>. R is fun!
-<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span></code></pre></div>
-<p>Now R is trying to run that sentence as a command, and it doesn’t work. Now we’re stuck over in the console. The <code>+</code> sign means that it’s still waiting for input, so we can’t type in a new command. To get out of this type <code>Esc</code>. This will work whenever you’re stuck with that <code>+</code> sign.</p>
-<p>It’s great that R is a glorified caluculator, but obviously we want to do more interesting things.</p>
-<p>To do useful and interesting things, we need to assign <em>values</em> to <em>objects</em>. To create objects, we need to give it a name followed by the assignment operator <code>&lt;-</code> and the value we want to give it.</p>
+<div id="r-markdown-1" class="section level1">
+<h1><span class="header-section-number">Lesson 7</span> R Markdown</h1>
+<p>R Markdown is a special file format which allows us to combine text, code, <em>and the output of that code</em> in a single file. This combination of explanation, code, and results is called <em>literate programming</em> and is a powerful way to share research and data explorations.</p>
+<p>RMarkdown is an extended version of the Markdown (<code>.md</code>) file format, which is an easy way to make nicely formatted text documents without endlessly tinkering with the formatting (as you might with LaTeX). The software community loves Markdown because in addition to being straightforward, it has good support for formatting code, which can be a pain in other formats.</p>
+<p>RMarkdown takes this a step further by allowing you to <em>run</em> the code in your document, and having the output appear below the code that made it.</p>
+<p>If you’ve used ipython/Jupyter notebooks before, R Markdown will feel similar. All the lessons in this workshop were created with R Markdown!</p> 
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-vectors-and-data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-2-assignment-operator.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="6-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="7-1-my-first-rmd.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -271,7 +261,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/packages-and-rmarkdown/rmarkdown.Rmd",
 "text": "Edit"
 },
 "download": null,

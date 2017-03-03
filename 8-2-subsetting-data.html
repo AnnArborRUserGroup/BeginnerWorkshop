@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-vectors-and-data-types.html">
-<link rel="next" href="2-2-assignment-operator.html">
+<link rel="prev" href="8-1-getting-the-package.html">
+<link rel="next" href="8-3-pipes.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -220,30 +220,54 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="creating-objects" class="section level2">
-<h2><span class="header-section-number">2.1</span> Creating objects</h2>
-<p>You can get output from R simply by typing in math in the console</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span>
-<span class="dv">12</span>/<span class="dv">7</span>
-<span class="dv">2</span>*<span class="dv">4</span>
-<span class="dv">2</span>^<span class="dv">4</span></code></pre></div>
-<p>We can also comment what it is we’re doing</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I am adding 3 and 5. R is fun!</span>
-<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span></code></pre></div>
-<p>What happens if we do that same command without the # sign in the front?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">I am adding <span class="dv">3</span> and <span class="dv">5</span>. R is fun!
-<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span></code></pre></div>
-<p>Now R is trying to run that sentence as a command, and it doesn’t work. Now we’re stuck over in the console. The <code>+</code> sign means that it’s still waiting for input, so we can’t type in a new command. To get out of this type <code>Esc</code>. This will work whenever you’re stuck with that <code>+</code> sign.</p>
-<p>It’s great that R is a glorified caluculator, but obviously we want to do more interesting things.</p>
-<p>To do useful and interesting things, we need to assign <em>values</em> to <em>objects</em>. To create objects, we need to give it a name followed by the assignment operator <code>&lt;-</code> and the value we want to give it.</p>
+<div id="subsetting-data" class="section level2">
+<h2><span class="header-section-number">8.2</span> Subsetting Data</h2>
+<p>The first two <code>dplyr</code> commands we’ll use help us to subset our data by rows and columns.</p>
+<div id="select" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> <code>select</code></h3>
+<p>The first command we’ll use is <code>select</code>, which allows us to choose columns from our dataset. Let’s use our <code>cats</code> dataset and select only the <code>coat</code> column; we did this previously with</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[, <span class="st">&quot;coat&quot;</span>]</code></pre></div>
+<p>With dplyr, we don’t need to enclose our column names in quotes</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(cats, coat)</code></pre></div>
+<p>Notice how the output differs slightly; all the main <code>dplyr</code> verbs behave consistently in that their inputs and outputs are both <code>data.frame</code>s, rather than returning a simple vector as the bracket-indexing method did. All of the main “verbs” we’ll talk about will return a data.frame as their result.</p>
+<p>We can select more columns by giving <code>select</code> additional arguments, and our output <code>data.frame</code> will have columns according to the order of our arguments</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(cats, coat, cat_id)</code></pre></div>
+</div>
+<div id="filter" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> <code>filter</code></h3>
+<p>So where <code>select</code> allowed us to select <em>columns</em>, <code>filter</code> operated on <em>rows</em>. Say we want to see the all the cats with black coats; we saw earlier how to use that using bracket-indexing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[cats$coat ==<span class="st"> &quot;black&quot;</span>, ]</code></pre></div>
+<p>In dplyr, this looks like</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(cats, coat ==<span class="st"> &quot;black&quot;</span>)</code></pre></div>
+<p>Notice we don’t have to use the <code>$</code> operator to tell <code>filter</code> where the <code>coat</code> column is; it’s smart enough to assume we want the <code>coat</code> column from the <code>data.frame</code> we passed in.</p>
+</div>
+<div id="arrange" class="section level3">
+<h3><span class="header-section-number">8.2.3</span> <code>arrange</code></h3>
+<p>Maybe you have a set of observations in your data that you want to organize by their value. <code>arrange</code> allows us to change the order of rows in our dataset based on their values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">arrange</span>(cats, coat)
+
+<span class="co"># you can include additional columns to help sort the data</span>
+<span class="kw">arrange</span>(cats, coat, sex)</code></pre></div>
+</div>
+<div id="mutate" class="section level3">
+<h3><span class="header-section-number">8.2.4</span> <code>mutate</code></h3>
+<p>One common task in working with data is updating/cleaning some of the values in columns. <code>mutate</code> allows us to do this relatively easily. Let’s say I don’t want a lot of decimal places in one of my measurements. I can use <code>mutate</code> to update my existing variable:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mutate</span>(cats, <span class="dt">weight =</span> <span class="kw">round</span>(weight, <span class="dv">2</span>))</code></pre></div>
+<p>Another common task is generating a new column based on values that are already in the dataset you are working on. <code>mutate</code> helps us do this, and tacks a new column to the end of our data.frame.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># let&#39;s say you want to add two variables together</span>
+<span class="kw">mutate</span>(cats, <span class="dt">new_variable =</span> age +<span class="st"> </span>weight)
+
+<span class="co"># you can include as many new variables as you want, separated by a comma</span>
+<span class="kw">mutate</span>(cats, <span class="dt">new_var_1 =</span> age +<span class="st"> </span>weight, <span class="dt">new_var_2 =</span> age *<span class="st"> </span>weight)</code></pre></div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-vectors-and-data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-2-assignment-operator.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="8-1-getting-the-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="8-3-pipes.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -271,7 +295,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/dplyr/dplyr.Rmd",
 "text": "Edit"
 },
 "download": null,

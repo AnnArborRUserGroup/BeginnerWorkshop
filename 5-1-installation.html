@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-vectors-and-data-types.html">
-<link rel="next" href="2-2-assignment-operator.html">
+<link rel="prev" href="5-packages.html">
+<link rel="next" href="5-2-loading.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -220,30 +220,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="creating-objects" class="section level2">
-<h2><span class="header-section-number">2.1</span> Creating objects</h2>
-<p>You can get output from R simply by typing in math in the console</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span>
-<span class="dv">12</span>/<span class="dv">7</span>
-<span class="dv">2</span>*<span class="dv">4</span>
-<span class="dv">2</span>^<span class="dv">4</span></code></pre></div>
-<p>We can also comment what it is we’re doing</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I am adding 3 and 5. R is fun!</span>
-<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span></code></pre></div>
-<p>What happens if we do that same command without the # sign in the front?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">I am adding <span class="dv">3</span> and <span class="dv">5</span>. R is fun!
-<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span></code></pre></div>
-<p>Now R is trying to run that sentence as a command, and it doesn’t work. Now we’re stuck over in the console. The <code>+</code> sign means that it’s still waiting for input, so we can’t type in a new command. To get out of this type <code>Esc</code>. This will work whenever you’re stuck with that <code>+</code> sign.</p>
-<p>It’s great that R is a glorified caluculator, but obviously we want to do more interesting things.</p>
-<p>To do useful and interesting things, we need to assign <em>values</em> to <em>objects</em>. To create objects, we need to give it a name followed by the assignment operator <code>&lt;-</code> and the value we want to give it.</p>
+<div id="installation" class="section level2">
+<h2><span class="header-section-number">5.1</span> Installation</h2>
+<p>To download and install a package from CRAN, call the <code>install.packages</code> command on a string with the name of the desired package. You will get output describing the installation progress.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>, <span class="dt">repos=</span><span class="st">&quot;http://cran.rstudio.com/&quot;</span>)</code></pre></div>
+<pre><code>## Installing package into &#39;/home/travis/R/Library&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<p>You may be asked to choose a mirror; the RStudio mirror is a good choice as it will pick the nearest mirror automatically. This will also download and install packages which RMarkdown depends on.</p>
+<p>You only need to install a package once per machine, unless you need to update an already-installed package. Calling <code>install.packages</code> for an existing package will update it if there’s a more recent version on CRAN than on your machine.</p>
+<p>You can view all of the installed packages using the <code>installed.packages</code> command. This will output a lot of information for each package, so if you only want a list of the installed package names, you can specify that you want the “Package” column. I like to look at this as a vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.vector</span>(<span class="kw">installed.packages</span>()[,<span class="st">&quot;Package&quot;</span>])</code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-vectors-and-data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-2-assignment-operator.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="5-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="5-2-loading.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -271,7 +265,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/packages-and-rmarkdown/packages.Rmd",
 "text": "Edit"
 },
 "download": null,
