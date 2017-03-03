@@ -23,9 +23,9 @@ description: "This is a minimal example of using the bookdown package to write a
 
 This is the core content for the Ann Arbor R User Group Beginner Workshops.
 
-Each workshop consists of two sessions in which we provide hands-on 
+Each workshop consists of two sessions in which we provide hands-on training with the basics of the R environment, and overviews of some of the most widely-used packages.
 
-Welcome to the R community.
+Welcome to the R community!
 
 ## Requirements {-}
 
@@ -44,6 +44,19 @@ Get Rstudio from the [RStudio website](https://www.rstudio.com/products/rstudio/
 We'll use Slack to communicate during the workshop. The AARUG slack group is also a great resource for hearing about R-related events, announcements, and receiving help with your R code.
 
 Request to join the AARUG slack group [here](http://annarborrusergroup.github.io/slack/).
+
+## Socrative Channel {-}
+
+We'll be using Socrative to ask pop-questions during the workshop. We have a "classroom" that you can join and respond to multiple-choice questions.
+
+The link is [here.](https://b.socrative.com/login/student/)
+The classroom number is: 
+
+## Sticky Notes {-}
+
+At your station during the workshop, you should have a pair of sticky notes of different colors (green and red were what we used last time). You can use these sticky notes to signal the instructors if you have a question or need help, or if everything is fine. 
+
+If you've placed your green sticky on the top of your laptop, we'll assume that everything is okay; if you've put up your red sticky, one of the instructors will come to your station to assist you. Don't be afraid to ask for help! You're here to learn, and we want to make sure we're best able to help you do that.
 
 ## Contributing {-}
 
