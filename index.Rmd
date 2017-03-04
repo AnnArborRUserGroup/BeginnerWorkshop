@@ -58,6 +58,20 @@ At your station during the workshop, you should have a pair of sticky notes of d
 
 If you've placed your green sticky on the top of your laptop, we'll assume that everything is okay; if you've put up your red sticky, one of the instructors will come to your station to assist you. Don't be afraid to ask for help! You're here to learn, and we want to make sure we're best able to help you do that.
 
+## The Data!
+
+We'll be using a few different data sets for the workshop. Please download them and be prepared to copy them into a working directory the instructors will point you to.
+
+The small Herding Cats dataset is available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.dataurl%7D%7D/herding-cats-small.csv)
+
+The full Herding Cats dataset is available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.dataurl%7D%7D/herding-cats.csv)
+
+The Old Faithful dataset for the optional takehome is available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.dataurl%7D%7D/Old-Faithful.csv)
+
+#### Takehome
+
+There is an optional takehome assignment available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.lessonurl%7D%7D/takehome/takehome.html)
+
 ## Contributing {-}
 
 The original lesson plans were adapted from the [Software Carpentry](http://software-carpentry.org/) and [Data Carpentry](http://www.datacarpentry.org/) projects.
