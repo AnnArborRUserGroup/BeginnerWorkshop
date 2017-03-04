@@ -1,5 +1,5 @@
 Package: Workshop
 Title: Beginner Workshop
 Version: 0.0.1
-Imports: bookdown, ggplot2, dplyr
+Imports: bookdown, ggplot2, dplyr, readr
 Remotes: AnnArborRUserGroup/BeginnerWorkshop

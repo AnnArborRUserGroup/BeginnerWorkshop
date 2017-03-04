@@ -23,9 +23,9 @@ description: "This is a minimal example of using the bookdown package to write a
 
 This is the core content for the Ann Arbor R User Group Beginner Workshops.
 
-Each workshop consists of two sessions in which we provide hands-on 
+Each workshop consists of two sessions in which we provide hands-on training with the basics of the R environment, and overviews of some of the most widely-used packages.
 
-Welcome to the R community.
+Welcome to the R community!
 
 ## Requirements {-}
 
@@ -41,9 +41,36 @@ Get Rstudio from the [RStudio website](https://www.rstudio.com/products/rstudio/
 
 ## Slack {-}
 
-We'll use Slack to communicate during the workshop. The AARUG slack group is also a great resource for hearing about R-related events, announcements, and receiving help with your R code.
+We'll use Slack to communicate during the workshop. The A2MADS slack group is also a great resource for hearing about R and other data-science related events, announcements, and receiving help with your code.
 
-Request to join the AARUG slack group [here](http://annarborrusergroup.github.io/slack/).
+Request to join the A2MADS slack group [here](https://a2mads.herokuapp.com/).
+
+## Socrative Channel {-}
+
+We'll be using Socrative to ask pop-questions during the workshop. We have a "classroom" that you can join and respond to multiple-choice questions.
+
+The link is [here.](https://b.socrative.com/login/student/)
+The classroom number is: 22545805
+
+## Sticky Notes {-}
+
+At your station during the workshop, you should have a pair of sticky notes of different colors (green and red were what we used last time). You can use these sticky notes to signal the instructors if you have a question or need help, or if everything is fine. 
+
+If you've placed your green sticky on the top of your laptop, we'll assume that everything is okay; if you've put up your red sticky, one of the instructors will come to your station to assist you. Don't be afraid to ask for help! You're here to learn, and we want to make sure we're best able to help you do that.
+
+## The Data!
+
+We'll be using a few different data sets for the workshop. Please download them and be prepared to copy them into a working directory the instructors will point you to.
+
+The small Herding Cats dataset is available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.dataurl%7D%7D/herding-cats-small.csv)
+
+The full Herding Cats dataset is available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.dataurl%7D%7D/herding-cats.csv)
+
+The Old Faithful dataset for the optional takehome is available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.dataurl%7D%7D/Old-Faithful.csv)
+
+#### Takehome
+
+There is an optional takehome assignment available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.lessonurl%7D%7D/takehome/takehome.html)
 
 ## Contributing {-}
 
