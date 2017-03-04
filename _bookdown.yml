@@ -3,12 +3,12 @@ edit: https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/%s
 exclude: ['other-lessons']
 rmd_files: [
   "index.Rmd",
-  "lessons/basics/basics.Rmd",
-  "lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
-  "lessons/packages/packages.Rmd",
-  "lessons/dataframes/dataframes.Rmd",
-  "lessons/rmarkdown/rmarkdown.Rmd",
-  "lessons/dplyr/dplyr.Rmd",
-  "lessons/data-visualization/ggplot2.Rmd",
-  "lessons/statistics/statistics.Rmd"
+  "lessons/basics.Rmd",
+  "lessons/vectors-and-datatypes.Rmd",
+  "lessons/packages.Rmd",
+  "lessons/dataframes.Rmd",
+  "lessons/rmarkdown.Rmd",
+  "lessons/dplyr.Rmd",
+  "lessons/ggplot2.Rmd",
+  "lessons/statistics.Rmd"
   ]
