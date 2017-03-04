@@ -41,9 +41,9 @@ Get Rstudio from the [RStudio website](https://www.rstudio.com/products/rstudio/
 
 ## Slack {-}
 
-We'll use Slack to communicate during the workshop. The AARUG slack group is also a great resource for hearing about R-related events, announcements, and receiving help with your R code.
+We'll use Slack to communicate during the workshop. The A2MADS slack group is also a great resource for hearing about R and other data-science related events, announcements, and receiving help with your code.
 
-Request to join the AARUG slack group [here](https://a2mads.herokuapp.com/).
+Request to join the A2MADS slack group [here](https://a2mads.herokuapp.com/).
 
 ## Socrative Channel {-}
 
