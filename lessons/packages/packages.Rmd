@@ -47,7 +47,6 @@ Most packages need to be loaded into the current environment to be accessible. Y
 
 We load packages with the `library` command:
 
-<<<<<<< HEAD:lessons/packages/packages.Rmd
 ```{r, eval = FALSE}
 library(readr)  # notice the lack of quotes
 ```
