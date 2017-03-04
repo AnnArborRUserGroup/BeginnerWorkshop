@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-3-notes-on-objects.html">
-<link rel="next" href="2-5-functions-and-their-arguments.html">
+<link rel="prev" href="6-r-markdown.html">
+<link rel="next" href="6-2-digging-deeper.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -222,17 +222,50 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level2">
-<h2><span class="header-section-number">2.4</span> Functions</h2>
-<p>The other key feature of R are functions. These are R’s built in capabilities. Some examples of these are mathematical functions, like <code>sqrt</code> and <code>round</code>. You can also get functions from libraries (which we’ll talk about in a bit), or even write your own.</p>
+<div id="my-first-rmd" class="section level2">
+<h2><span class="header-section-number">6.1</span> My First Rmd</h2>
+<p>Before we get started, let’s make sure that the <code>RMarkdown</code> package is installed. Remember, you only need to run <code>install.packages</code> command once, unless you want to update the package.</p>
+<p>(Unlike most packages, we don’t need a <code>library()</code> statement for <code>rmarkdown</code>. Don’t worry about that much for now- RStudio takes care of things behind the scenes.)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>)</code></pre></div>
+<p>Rstudio makes it easy to create a new RMarkdown file, and it even starts with a demo file that shows off most of the basic features of the <code>Rmd</code> format. In the upper-left corner, click the “new file” icon and select RMarkdown. A window should appear to help you configure this file initially. There’s a lot of options (R Markdown can do so much!), but for now, make sure your name is in the “Author” field, and change the “Title” to be something like “AARUG Workshop”.</p>
+<p>Before we delve into what each of these pieces mean, let’s “knit” the document so we can see what kind of output RMarkdown produces. Above the file, press the <code>knit</code> button, the one that looks like a ball of yarn.</p>
+<p>You should see a new pane open in RStudio that shows R “knitting” the document, and when it’s done, a pop-up will appear showing the knitted output.</p>
+<p>This new output being displayed as an <code>html</code> file; look in the file browser pane, and you’ll see a <code>.html</code> file next to your <code>.Rmd</code> file (may need to refresh), because RStudio automatically saved this output when the document finished knitting.</p>
+<p>Let’s look at the individual pieces in this document:</p>
+<div id="header" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Header</h3>
+<p>This is the section at the top, with three dashes before and after. This lists some metadata about the object. The title, date, and author form the start of the output document, and the <code>output:</code> line instructs the knitting process to generate an html file.</p>
+</div>
+<div id="section-titles" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Section Titles</h3>
+<p>You can enlarge text be preceding it with one or more pound signs (<code>#</code>). This is mainly useful for organizing a document into sections. The more pound signs, the smaller the text, so when you make sub-section you should add at least one more pound sign than used in the parent sections’ title.</p>
+</div>
+<div id="link" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> Link</h3>
+<p>You can make text clickable by including a link to a different website. An example can be found above, where we included a link to <a href="https://cran.r-project.org">CRAN</a>.</p>
+<p>There are two parts to creating linked text. The first part is including the text you want to see, surrounded by square brackets <code>[CRAN]</code>. Immediately after that, add the link surrounded by parentheses <code>(https://cran.r-project.org)</code>. The final product looks like <code>[CRAN](https://cran.r-project.org)</code>.</p>
+</div>
+<div id="bolditalic-text" class="section level3">
+<h3><span class="header-section-number">6.1.4</span> Bold/Italic Text</h3>
+<p>The double-asterisks surrounding the word “Knit” in the second paragraph cause that piece of text to be bold. This phrase can be multiple words, but should not have spaces immediately on the inside of the asterisks. You can make text italix by similarly wrapping in underscores (<code>_</code>) or using single asterisks.</p>
+</div>
+<div id="code-chunks" class="section level3">
+<h3><span class="header-section-number">6.1.5</span> Code Chunks</h3>
+<p>This is the real meat of the document! An R Markdown code chunk is a section which starts and ends with triple-backticks (`, not <code>'</code>). After the initial set, the curly-bracketed section which starts with <code>{r</code> is what forces this to be ran as R code; without this piece, the section would get formatted like code, but would not be executed when knitting. The phrase after the <code>r</code> is the <em>chunk name</em>. Chunks do not need to be named, but no two chunks can have the same name. Naming chunks can help keep code organized and make it easier to track down the source of errors when they occur.</p>
+<div id="chunk-options" class="section level4">
+<h4><span class="header-section-number">6.1.5.1</span> Chunk Options</h4>
+<p>As the second default section discusses, we can hide the code in a code chunk by placing a comma after out chunk name and setting an option <code>echo=FALSE</code>. The code will still execute, and its output will be inserted in the knitted document, but it will not be shown.</p>
+<p>Similarly, you can set <code>eval=FALSE</code> to avoid running a code chunk.</p>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-3-notes-on-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-5-functions-and-their-arguments.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="6-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-2-digging-deeper.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -260,7 +293,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/rmarkdown/rmarkdown.Rmd",
 "text": "Edit"
 },
 "download": null,

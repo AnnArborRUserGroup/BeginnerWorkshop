@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-3-notes-on-objects.html">
-<link rel="next" href="2-5-functions-and-their-arguments.html">
+<link rel="prev" href="5-5-indexing-data-frame-objects.html">
+<link rel="next" href="6-r-markdown.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -222,17 +222,51 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level2">
-<h2><span class="header-section-number">2.4</span> Functions</h2>
-<p>The other key feature of R are functions. These are R’s built in capabilities. Some examples of these are mathematical functions, like <code>sqrt</code> and <code>round</code>. You can also get functions from libraries (which we’ll talk about in a bit), or even write your own.</p>
+<div id="factors" class="section level2">
+<h2><span class="header-section-number">5.6</span> Factors</h2>
+<p>Factors are used to represent categorical data. Factors can be ordered or unordered and are an important class for statistical analysis and for plotting.</p>
+<p>Factors are stored as integers, and have labels associated with these unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.</p>
+<p>In the data frame we just imported, let’s create a factor.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># a new function, factor()</span>
+<span class="co"># it takes a vector and converts it into a factor</span>
+cats$coat &lt;-<span class="st"> </span><span class="kw">factor</span>(cats$coat)
+
+<span class="kw">str</span>(cats)</code></pre></div>
+<p>We can see the names of the multiple columns. And, we see that coat is a <code>Factor w/ 5 levels</code></p>
+<p>Once created, factors can only contain a pre-defined set values, known as <em>levels</em>. By default, R always sorts <em>levels</em> in alphabetical order.</p>
+<p>You can check this by using the function <code>levels()</code>, and check the number of levels using <code>nlevels()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(cats$coat)
+<span class="kw">nlevels</span>(cats$coat)</code></pre></div>
+<p>Sometimes, the order of the factors does not matter, other times you might want to specify the order because it is meaningful (e.g., “low”, “medium”, “high”) or it is required by particular type of analysis. Additionally, specifying the order of the levels allows to compare levels:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">satisfaction &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>))
+<span class="kw">levels</span>(satisfaction)
+satisfaction &lt;-<span class="st"> </span><span class="kw">factor</span>(satisfaction, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>))
+<span class="kw">levels</span>(satisfaction)
+<span class="kw">min</span>(satisfaction) ## doesn&#39;t work</code></pre></div>
+<pre><code>## Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), .Label = c(&quot;low&quot;, : &#39;min&#39; not meaningful for factors</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">satisfaction &lt;-<span class="st"> </span><span class="kw">factor</span>(satisfaction, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>), <span class="dt">ordered =</span> <span class="ot">TRUE</span>)
+<span class="kw">levels</span>(satisfaction)
+<span class="kw">min</span>(satisfaction) ## works!</code></pre></div>
+<p>In R’s memory, these factors are represented by numbers (1, 2, 3). They are better than using simple integer labels because factors are self describing: <code>&quot;low&quot;</code>, <code>&quot;medium&quot;</code>, and <code>&quot;high&quot;</code>&quot; is more descriptive than <code>1</code>, <code>2</code>, <code>3</code>. Which is low? You wouldn’t be able to tell with just integer data. Factors have this information built in. It is particularly helpful when there are many levels (like the species in our example data set).</p>
+<div id="converting-factors" class="section level3">
+<h3><span class="header-section-number">5.6.1</span> Converting factors</h3>
+<p>If you need to convert a factor to a character vector, simply use <code>as.character(x)</code>.</p>
+<p>Converting a factor to a numeric vector is however a little trickier, and you have to go via a character vector. Compare:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">2</span>))
+<span class="kw">as.numeric</span>(f)               ## wrong! and there is no warning...
+<span class="kw">as.numeric</span>(<span class="kw">as.character</span>(f)) ## works...
+<span class="kw">as.numeric</span>(<span class="kw">levels</span>(f))[f]    ## The recommended way.</code></pre></div>
+
 </div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-3-notes-on-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-5-functions-and-their-arguments.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="5-5-indexing-data-frame-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-r-markdown.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -260,7 +294,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/dataframes/dataframes.Rmd",
 "text": "Edit"
 },
 "download": null,

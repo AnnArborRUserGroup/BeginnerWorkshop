@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-3-notes-on-objects.html">
-<link rel="next" href="2-5-functions-and-their-arguments.html">
+<link rel="prev" href="8-3-additional-resources.html">
+<link rel="next" href="9-1-logistic-regression.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -222,17 +222,70 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level2">
-<h2><span class="header-section-number">2.4</span> Functions</h2>
-<p>The other key feature of R are functions. These are R’s built in capabilities. Some examples of these are mathematical functions, like <code>sqrt</code> and <code>round</code>. You can also get functions from libraries (which we’ll talk about in a bit), or even write your own.</p>
+<div id="common-statistical-techniques-in-r" class="section level1">
+<h1><span class="header-section-number">Lesson 9</span> Common Statistical Techniques in R</h1>
+<hr />
+<blockquote>
+<h2 id="learning-objectives-6"><span class="header-section-number">9</span> Learning Objectives</h2>
+<ul>
+<li>To become familiar with common statistical functions available in R</li>
+<li>Linear Regression</li>
+<li>Logistic Regression</li>
+<li>K-Means Clustering</li>
+</ul>
+</blockquote>
+<hr />
+<div id="simple-linear-regression" class="section level3">
+<h3><span class="header-section-number">9.0.1</span> Simple Linear Regression</h3>
+<p><img src="_main_files/figure-html/unnamed-chunk-84-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>Linear regression is one of the most commonly used methods in all of statistics. It is used for a large variety of applications and offers highly interpretable results. It was the first regression method discovered and belongs to one of the most important families of models, generalized linear models.</p>
+<p>Simple linear regression estimates the linear relationship between two variables, an outcome variable <em>y</em>, and an explanatory variable <em>x</em>.</p>
+<p>To fit a linear regression in <em>R</em>, we can use the <code>lm()</code> function (think <em>linear model</em>). We use the formula notation, <code>y~x</code> where <code>y</code> is the name of your outcome variable, and <code>x</code> is the name of your explanatory variable, both are unquoted. The easiest way to view the results interactively is with the <code>summary()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> wander_dist ~<span class="st"> </span>weight, <span class="dt">data =</span> cats)
+<span class="kw">summary</span>(weight_fit)</code></pre></div>
+<hr />
+<p>In this case, the <code>summary</code> function returns an object that provides a lot of interesting information when printed out. It also stores that information as part of the object, things like the terms used in the model, the coefficients of the model estimates, and the residuals of the model. This is nice if we want to do something programmatic with the results.</p>
+<hr />
+</div>
+<div id="multiple-linear-regression" class="section level3">
+<h3><span class="header-section-number">9.0.2</span> Multiple Linear Regression</h3>
+<p>We aren’t restricted to just one explanatory variable in linear regression. We can test the effect of a linear relationship between multiple explanatory variables <em>simultaneously</em>. In the <code>lm</code> function, we just add extra variable names in the formula separated by <code>+</code>’s.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wander_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> wander_dist ~<span class="st"> </span>weight +<span class="st"> </span>age , <span class="dt">data =</span> cats)
+<span class="kw">summary</span>(wander_fit)</code></pre></div>
+<hr />
+<blockquote>
+<h3 id="challenge"><span class="header-section-number">9.0.2</span> Challenge</h3>
+<p>Fit a model predicting wander_dist and include weight, age, and fixed as predictors. What is the estimate for the effect of being fixed on the wandering distance?</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wander_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> wander_dist ~<span class="st"> </span>weight +<span class="st"> </span>age +<span class="st"> </span>fixed, <span class="dt">data =</span> cats)
+<span class="kw">summary</span>(wander_fit)</code></pre></div>
+<hr />
+<p>If an explanatory variable is not binary (coded as 0s or 1s), we can still include it in the model. The <code>lm</code> function understands factors to be categorical variables automatically and will output the estimates with a reference category.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wander_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> wander_dist ~<span class="st"> </span>weight +<span class="st"> </span>age +<span class="st"> </span><span class="kw">factor</span>(coat) +<span class="st"> </span>sex, <span class="dt">data =</span> cats)
+summary_fit &lt;-<span class="st"> </span><span class="kw">summary</span>(wander_fit)
+summary_fit[<span class="st">&#39;coefficients&#39;</span>]</code></pre></div>
+<blockquote>
+<h3 id="challenge-1"><span class="header-section-number">9.0.2</span> Challenge</h3>
+<p>What command will return the r-squared value from the summary_lm_fit object after running these commands:</p>
+<p>wander_fit &lt;- lm(formula = wander_dist ~ weight + age + fixed, data = cats) summary_lm_fit &lt;- summary(wander_fit)</p>
+</blockquote>
+<hr />
+<p>The <code>lm</code> function also can estimate interactions between explanatory variables. This is useful if we think that the linear relationship between our outcome y and a variable x1 is <em>different</em> depending on the variable x2. This can be accomplished by connecting two variables in the formula with a <code>*</code> instead of a <code>+</code>.</p>
+<blockquote>
+<h3 id="challenge-2"><span class="header-section-number">9.0.2</span> Challenge</h3>
+<p>Fit a linear regression model estimating the relationship between the outcome, wandering distance (<code>wander_dist</code>) and explanatory variables age (<code>age</code>), weight (<code>weight</code>), with an interaction between age and weight. What is the coefficient associated with the interaction between age and weight?</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wander_fit &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> wander_dist ~<span class="st"> </span>weight *<span class="st"> </span>age, <span class="dt">data =</span> cats)
+<span class="kw">summary</span>(wander_fit)</code></pre></div>
+</div> 
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-3-notes-on-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-5-functions-and-their-arguments.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="8-3-additional-resources.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="9-1-logistic-regression.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -260,7 +313,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/statistics/statistics.Rmd",
 "text": "Edit"
 },
 "download": null,

@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-3-notes-on-objects.html">
-<link rel="next" href="2-5-functions-and-their-arguments.html">
+<link rel="prev" href="5-4-inspecting-data-frame-objects.html">
+<link rel="next" href="5-6-factors.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -222,17 +222,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level2">
-<h2><span class="header-section-number">2.4</span> Functions</h2>
-<p>The other key feature of R are functions. These are R’s built in capabilities. Some examples of these are mathematical functions, like <code>sqrt</code> and <code>round</code>. You can also get functions from libraries (which we’ll talk about in a bit), or even write your own.</p>
+<div id="indexing-data.frame-objects" class="section level2">
+<h2><span class="header-section-number">5.5</span> Indexing <code>data.frame</code> objects</h2>
+<p>Our cats data frame has rows and columns (it has 2 dimensions), if we want to extract some specific data from it, we need to specify the “coordinates” we want from it. Row numbers come first, followed by column numbers (i.e. [row, column]).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[<span class="dv">1</span>, <span class="dv">2</span>]   <span class="co"># first element in the 2nd column of the data frame</span>
+cats[<span class="dv">1</span>, <span class="dv">6</span>]   <span class="co"># first element in the 6th column</span>
+cats[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">7</span>] <span class="co"># first three elements in the 7th column</span>
+cats[<span class="dv">3</span>, ]    <span class="co"># the 3rd element for all columns</span>
+cats[, <span class="dv">7</span>]    <span class="co"># the entire 7th column</span>
+head_meta &lt;-<span class="st"> </span>cats[<span class="dv">1</span>:<span class="dv">6</span>, ] <span class="co"># Row 1-6 which is the same as head()</span></code></pre></div>
+<p>For larger datasets, it can be tricky to remember the column number that corresponds to a particular variable. (Are species names in column 5 or 7? oh, right… they are in column 6). In some cases, in which column the variable will be can change if the script you are using adds or removes columns. It’s therefore often better to use column names to refer to a particular variable, and it makes your code easier to read and your intentions clearer.</p>
+<p>You can do operations on a particular column, by selecting it using the <code>$</code> sign. In this case, the entire column is a vector. You can use <code>names(cats)</code> or <code>colnames(cats)</code> to remind yourself of the column names. For instance, to extract all the cats’ weight information from our dataset:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$weight</code></pre></div>
+<p>In some cases, you may way to select more than one column. You can do this using the square brackets, passing in a vector of the columns to select. Suppose we wanted weight and coat information:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[ , <span class="kw">c</span>(<span class="st">&quot;weight&quot;</span>, <span class="st">&quot;coat&quot;</span>)]</code></pre></div>
+<p>You can even access columns by column name <em>and</em> select specific rows of interest. For example, if we wanted the weight and coat of just rows 4 through 7, we could do:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[<span class="dv">4</span>:<span class="dv">7</span>, <span class="kw">c</span>(<span class="st">&quot;weight&quot;</span>, <span class="st">&quot;coat&quot;</span>)]</code></pre></div>
+<p>We can can also use logical statements to select and filter items from a <code>data.frame</code>. For example, to select all rows with black cats we could use the following statement</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[cats$coat ==<span class="st"> &quot;black&quot;</span>, ]</code></pre></div>
+<p>let’s break this down a bit. The logical statement in the brackets returns a vector of <code>TRUE</code> and <code>FALSE</code> values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$coat ==<span class="st"> &quot;black&quot;</span></code></pre></div>
+<p>These <code>booleans</code> allow us to select which records we want from our <code>data.frame</code></p>
+<p>Another way to do this is with the function <code>which()</code>. <code>which()</code> finds the indexes of records meeting a logical statement</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">which</span>(cats$coat ==<span class="st"> &quot;black&quot;</span>)</code></pre></div>
+<p>So, we could also write</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[<span class="kw">which</span>(cats$coat ==<span class="st"> &quot;black&quot;</span>), ]</code></pre></div>
+<p>But that’s getting really long and ugly. R is already considered somewhat of an ugly duckling among programming languages, so no reason to play into the stereotype.</p>
+<p>We can combine logical statements and index statements</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[cats$coat ==<span class="st"> &quot;black&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;coat&quot;</span>, <span class="st">&quot;weight&quot;</span>)]</code></pre></div>
+<p>Finally, we can use <code>&amp;</code>, the symbol for “and”, and <code>|</code>, the symbol for “or”, to make logical statements.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[cats$coat ==<span class="st"> &quot;black&quot;</span> &amp;<span class="st"> </span>cats$roamer ==<span class="st"> &quot;no&quot;</span>, ]</code></pre></div>
+<p>This statement selects all records with black cats that also like string</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-3-notes-on-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-5-functions-and-their-arguments.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="5-4-inspecting-data-frame-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="5-6-factors.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -260,7 +288,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/dataframes/dataframes.Rmd",
 "text": "Edit"
 },
 "download": null,

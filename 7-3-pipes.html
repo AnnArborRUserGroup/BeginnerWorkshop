@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-3-notes-on-objects.html">
-<link rel="next" href="2-5-functions-and-their-arguments.html">
+<link rel="prev" href="7-2-subsetting-data.html">
+<link rel="next" href="7-4-combining-select-filter.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -222,17 +222,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level2">
-<h2><span class="header-section-number">2.4</span> Functions</h2>
-<p>The other key feature of R are functions. These are R’s built in capabilities. Some examples of these are mathematical functions, like <code>sqrt</code> and <code>round</code>. You can also get functions from libraries (which we’ll talk about in a bit), or even write your own.</p>
+<div id="pipes" class="section level2">
+<h2><span class="header-section-number">7.3</span> Pipes</h2>
+<p>You’ll often find yourself needing to use multiple functions in a row to organize some data that you’re working on. This can sometimes lead to dense code that is difficult to read.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># for example</span>
+<span class="kw">sort</span>(<span class="kw">round</span>(<span class="kw">sqrt</span>(cats$age *<span class="st"> </span><span class="dv">2</span>), <span class="dv">3</span>))</code></pre></div>
+<p>In the code above, I have multiple steps to get my result, but you have to read what’s going on from the inside out. This can be cumbersome, especially if you need to understand how one function’s output influences the next operation.</p>
+<div id="using-pipes" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Using Pipes</h3>
+<p><code>dplyr</code> includes a special operator designed to make code <em>flow</em> and appear more readable.</p>
+<p>It’s written as <code>%&gt;%</code>, and you can call it the “pipe” operator.</p>
+<p>Our example above can be re-written as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$age %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">sqrt</span>() %&gt;%
+<span class="st">  </span><span class="kw">round</span>(<span class="dv">3</span>) %&gt;%
+<span class="st">  </span><span class="kw">sort</span>()</code></pre></div>
+<p>Instead of being nested within a bunch of commands, you can see read the code as a series of statements: 1. With the ages of all the cats, 2. Take the square-root of these values, <em>then</em> 3. Round the result to the 3rd digit, <em>then</em> 4. Sort the values in ascending order</p>
+<p>I encourage you to think of the <code>%&gt;%</code> as short-hand for “then”, when reading code that uses it!</p>
+<p>“Pipe” operators are found in other languages; they get their name from the idea that your code can be thought of as a “pipeline”.</p>
+<p>Let’s look at another example.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">1.23456789</span>, <span class="dv">3</span>)</code></pre></div>
+<p>We can use a pipe operator to acheive the same thing.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">1.23456789</span> %&gt;%<span class="st"> </span><span class="kw">round</span>(<span class="dv">3</span>)</code></pre></div>
+<p>The pipe takes care of making sure the output of the expression on the left-hand-side (a simple numeric, in this case) is inserted as the first argument of the expressing on the right-hand-side. We can also pipe into other argument positions by using a period as a placeholder.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> %&gt;%<span class="st"> </span><span class="kw">round</span>(<span class="fl">1.23456789</span>, .)</code></pre></div>
+<p>These are contrived examples, and I don’t suggest using pipes for simple operations like rounding. The pipes really become useful when chaining together multiple operations in sequence, as we’ll do with our <code>dplyr</code> functions.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-3-notes-on-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-5-functions-and-their-arguments.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="7-2-subsetting-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="7-4-combining-select-filter.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -260,7 +283,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/dplyr/dplyr.Rmd",
 "text": "Edit"
 },
 "download": null,

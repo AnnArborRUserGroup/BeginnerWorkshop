@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-3-notes-on-objects.html">
-<link rel="next" href="2-5-functions-and-their-arguments.html">
+<link rel="prev" href="9-1-logistic-regression.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -222,17 +222,51 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level2">
-<h2><span class="header-section-number">2.4</span> Functions</h2>
-<p>The other key feature of R are functions. These are R’s built in capabilities. Some examples of these are mathematical functions, like <code>sqrt</code> and <code>round</code>. You can also get functions from libraries (which we’ll talk about in a bit), or even write your own.</p>
+<div id="k-means-clustering" class="section level2">
+<h2><span class="header-section-number">9.2</span> K-means Clustering</h2>
+<p>Another popular machine learning technique is k-means clustering. It seeks to group your data into a fixed number of clusters based on a measure of distance. An important pre-processing step to clustering is the center and scale your data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span>cats %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">scale_weight =</span> <span class="kw">as.numeric</span>(<span class="kw">scale</span>(weight)),
+         <span class="dt">scale_wander =</span> <span class="kw">as.numeric</span>(<span class="kw">scale</span>(wander_dist)),
+         <span class="dt">scale_age =</span> <span class="kw">as.numeric</span>(<span class="kw">scale</span>(age)))</code></pre></div>
+<hr />
+<p>We use the <code>kmeans</code> function to perform the clustering, and need to pass it a data frame, the number of centers we want, and another argument <code>nstart</code>, which helps get around some numerical issues if the algorithm gets stuck in a local extrema.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats_cluster &lt;-<span class="st"> </span>
+<span class="st">  </span><span class="kw">kmeans</span>(<span class="dt">x =</span> cats %&gt;%<span class="st"> </span>dplyr::<span class="kw">select</span>(scale_weight, scale_wander, scale_age), 
+         <span class="dt">centers =</span> <span class="dv">3</span>,
+         <span class="dt">nstart =</span> <span class="dv">20</span>)
+<span class="kw">str</span>(cats_cluster)
+cats_cluster$centers</code></pre></div>
+<hr />
+<p>We can use <code>ggplot</code> to visualize the clusters.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$cluster &lt;-<span class="st"> </span><span class="kw">factor</span>(cats_cluster$cluster)
+cluster_centers &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(cats_cluster$centers)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> cats) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_weight, <span class="dt">color =</span> cluster), <span class="dt">size =</span> <span class="dv">4</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> cluster_centers, <span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_weight), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">size  =</span> <span class="dv">8</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">18</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-98-1.png" width="960" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> cats) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_wander, <span class="dt">color =</span> cluster), <span class="dt">size =</span> <span class="dv">4</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> cluster_centers, <span class="kw">aes</span>(<span class="dt">x =</span> scale_age, <span class="dt">y =</span> scale_wander), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">size  =</span> <span class="dv">8</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">18</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-98-2.png" width="960" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> cats) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> scale_weight, <span class="dt">y =</span> scale_wander, <span class="dt">color =</span> cluster), <span class="dt">size =</span> <span class="dv">4</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> cluster_centers, <span class="kw">aes</span>(<span class="dt">x =</span> scale_weight, <span class="dt">y =</span> scale_wander), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">size  =</span> <span class="dv">8</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">18</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-98-3.png" width="960" style="display: block; margin: auto;" /></p>
+
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-3-notes-on-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-5-functions-and-their-arguments.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="9-1-logistic-regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -260,7 +294,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/statistics/statistics.Rmd",
 "text": "Edit"
 },
 "download": null,

@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-3-notes-on-objects.html">
-<link rel="next" href="2-5-functions-and-their-arguments.html">
+<link rel="prev" href="5-3-what-are-data-frames.html">
+<link rel="next" href="5-5-indexing-data-frame-objects.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -222,17 +222,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level2">
-<h2><span class="header-section-number">2.4</span> Functions</h2>
-<p>The other key feature of R are functions. These are R’s built in capabilities. Some examples of these are mathematical functions, like <code>sqrt</code> and <code>round</code>. You can also get functions from libraries (which we’ll talk about in a bit), or even write your own.</p>
+<div id="inspecting-data.frame-objects" class="section level2">
+<h2><span class="header-section-number">5.4</span> Inspecting <code>data.frame</code> objects</h2>
+<p>We’ve seen how <code>str()</code> can be useful to check the content and the structure of a <code>data.frame</code>. Here is a non-exhaustive list of functions to get a sense of the content/structure of the data.</p>
+<ul>
+<li>Size:
+<ul>
+<li><code>dim()</code> - returns a vector with the number of rows in the first element, and the number of columns as the second element (the dimensions of the object)</li>
+<li><code>nrow()</code> - returns the number of rows</li>
+<li><code>ncol()</code> - returns the number of columns</li>
+</ul></li>
+<li>Content:
+<ul>
+<li><code>head()</code> - shows the first 6 rows</li>
+<li><code>tail()</code> - shows the last 6 rows</li>
+</ul></li>
+<li>Names:
+<ul>
+<li><code>names()</code> - returns the column names (synonym of <code>colnames()</code> for <code>data.frame</code> objects)<br />
+</li>
+<li><code>rownames()</code> - returns the row names<br />
+</li>
+</ul></li>
+<li>Summary:
+<ul>
+<li><code>str()</code> - structure of the object and information about the class, length and content of each column<br />
+</li>
+<li><code>summary()</code> - summary statistics for each column</li>
+</ul></li>
+</ul>
+<p>Note: most of these functions are “generic”, they can be used on other types of objects besides <code>data.frame</code>.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-3-notes-on-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-5-functions-and-their-arguments.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="5-3-what-are-data-frames.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="5-5-indexing-data-frame-objects.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -260,7 +287,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/dataframes/dataframes.Rmd",
 "text": "Edit"
 },
 "download": null,

@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-3-notes-on-objects.html">
-<link rel="next" href="2-5-functions-and-their-arguments.html">
+<link rel="prev" href="8-data-visualization.html">
+<link rel="next" href="8-2-ggplot2.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -222,17 +222,41 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level2">
-<h2><span class="header-section-number">2.4</span> Functions</h2>
-<p>The other key feature of R are functions. These are R’s built in capabilities. Some examples of these are mathematical functions, like <code>sqrt</code> and <code>round</code>. You can also get functions from libraries (which we’ll talk about in a bit), or even write your own.</p>
+<div id="built-in-plotting-functions" class="section level2">
+<h2><span class="header-section-number">8.1</span> Built in plotting functions</h2>
+<p>When working with large sets of numbers it can be useful to display that information graphically.</p>
+<p>R has a number of built-in functions for creating plots such as histograms, scatter plots, bar charts, boxplots and much <a href="http://www.statmethods.net/graphs/">more</a>.</p>
+<p>We’ll try these out using the <code>cats</code> data introduced earlier.</p>
+<p>The <code>plot()</code> function provides a method for generic x and y plotting (e.g. scatter plots).</p>
+<div id="scatter-plot" class="section level3 unnumbered">
+<h3>Scatter plot</h3>
+<p>Let’s start by creating a <strong>scatter plot</strong>. A scatter plot provides a graphical view of the relationship between two sets of numbers.</p>
+<p>We can create a scatter plot using the <code>plot()</code> function and supplying the x and y coordinates of the points.</p>
+<p>Using the <code>cats</code> data, we can make a scatterplot of kitten birth weight by mother’s age.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/herding-cats.csv&quot;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> cats$age, <span class="dt">y =</span> cats$weight)</code></pre></div>
+<p><img src="_main_files/figure-html/scatter-plot1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Each point represents a row in our dataset. The value on the x-axis is the mother’s age and the values on the y-axis correspond to the birth weight for the infant. For any plot you can customize many features of your graphs (fonts, colors, axes, titles) through <a href="http://www.statmethods.net/advgraphs/parameters.html">graphic options</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> cats$age,
+     <span class="dt">y =</span> cats$weight,
+     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>),
+     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">15</span>),
+     <span class="dt">xlab =</span> <span class="st">&quot;Age&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Weight&quot;</span>,
+     <span class="dt">main =</span> <span class="st">&quot;Weight by Age&quot;</span>,
+     <span class="dt">las =</span> <span class="dv">1</span>,
+     <span class="dt">col =</span> <span class="kw">factor</span>(cats$coat))</code></pre></div>
+<p><img src="_main_files/figure-html/scatter-plot2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>In this example</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-3-notes-on-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-5-functions-and-their-arguments.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="8-data-visualization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="8-2-ggplot2.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -260,7 +284,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/data-visualization/ggplot2.Rmd",
 "text": "Edit"
 },
 "download": null,

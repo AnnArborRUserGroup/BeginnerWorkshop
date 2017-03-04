@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-3-notes-on-objects.html">
-<link rel="next" href="2-5-functions-and-their-arguments.html">
+<link rel="prev" href="5-2-looking-at-data.html">
+<link rel="next" href="5-4-inspecting-data-frame-objects.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -222,17 +222,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level2">
-<h2><span class="header-section-number">2.4</span> Functions</h2>
-<p>The other key feature of R are functions. These are R’s built in capabilities. Some examples of these are mathematical functions, like <code>sqrt</code> and <code>round</code>. You can also get functions from libraries (which we’ll talk about in a bit), or even write your own.</p>
+<div id="what-are-data-frames" class="section level2">
+<h2><span class="header-section-number">5.3</span> What are data frames?</h2>
+<p><code>data.frame</code> is the <em>de facto</em> data structure for most tabular data and what we use for statistics and plotting.</p>
+<p>A <code>data.frame</code> is actually a <code>list</code> of vectors of identical lengths. Each vector represents a column, and each vector can be of a different data type (e.g., characters, integers, factors).</p>
+<p>Let’s use the <code>class()</code> function we’ve seen in the previous lesson to take talk about <code>data.frames</code> in more detail.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(cats)</code></pre></div>
+<p>In this case, <code>class()</code> returns a vector with three values, <code>tbl_df</code>, <code>tbl</code>, and <code>data.frame</code>. The first two values are attached by <code>readr</code> when it imports data. These classes instruct R how it should print the <code>data.frame</code> to the console. You’ll note that in addition to the column names, the class of each column is displayed, along with the dimensions of the data.</p>
+<p>A <code>data.frame</code> (and tibbles) can be created by the functions <code>read_csv()</code> or <code>read_table()</code>, in other words, when importing spreadsheets from your hard drive (or the web).</p>
+<p>Let’s now check the structure of this <code>data.frame</code> in more details with the function <code>str()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats)</code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-3-notes-on-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-5-functions-and-their-arguments.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="5-2-looking-at-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="5-4-inspecting-data-frame-objects.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -260,7 +267,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/dataframes/dataframes.Rmd",
 "text": "Edit"
 },
 "download": null,

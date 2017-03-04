@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="2-3-notes-on-objects.html">
-<link rel="next" href="2-5-functions-and-their-arguments.html">
+<link rel="prev" href="5-1-setup.html">
+<link rel="next" href="5-3-what-are-data-frames.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -222,17 +222,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level2">
-<h2><span class="header-section-number">2.4</span> Functions</h2>
-<p>The other key feature of R are functions. These are R’s built in capabilities. Some examples of these are mathematical functions, like <code>sqrt</code> and <code>round</code>. You can also get functions from libraries (which we’ll talk about in a bit), or even write your own.</p>
+<div id="looking-at-data" class="section level2">
+<h2><span class="header-section-number">5.2</span> Looking at data</h2>
+<p>You are now ready to load the data. We are going to use a function from the <code>readr</code> package called <code>read_csv()</code> to load the data file into memory (as a <code>data.frame</code>). In this case, our data is in a subdirectory called “data”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(readr)
+
+cats &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file =</span> <span class="st">&#39;data/herding-cats-small.csv&#39;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   street = col_character(),
+##   coat = col_character(),
+##   sex = col_character(),
+##   age = col_double(),
+##   weight = col_double(),
+##   fixed = col_integer(),
+##   wander_dist = col_double(),
+##   roamer = col_character(),
+##   cat_id = col_integer()
+## )</code></pre>
+<p>When you import a file, <code>readr</code> prints out a message that tells you what type of data it thinks is in each column of your file. By default, <code>readr</code> is usually able to guess what classes your data belong to, and sets them up for you as a <code>data.frame</code>. If we want to check that our data has been loaded, we can print the variable’s value: <code>cats</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats</code></pre></div>
+<p>The dataset we’re using for the current examples is quite small, and you should be able to see all the data in your console. However, if our dataset was larger, we probably wouldn’t want to print the whole thing to look at it. Instead, we can use the <code>head</code> command to view the first six lines or the <code>View</code> command to open the dataset in a spreadsheet-like viewer.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">View</span>(cats)</code></pre></div>
+<p>We’ve just done two very useful things.<br />
+1. We’ve read our data in to R, so now we can work with it in R<br />
+2. We’ve created a data frame (with the <code>read_csv</code> command) the standard way R works with data.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="2-3-notes-on-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-5-functions-and-their-arguments.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="5-1-setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="5-3-what-are-data-frames.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -260,7 +282,7 @@ gitbook.start({
 "size": 1.5
 },
 "edit": {
-"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/vectors-and-datatypes/vectors-and-datatypes.Rmd",
+"link": "https://github.com/AnnArborRUserGroup/BeginnerWorkshop/edit/master/lessons/dataframes/dataframes.Rmd",
 "text": "Edit"
 },
 "download": null,
