@@ -50,7 +50,7 @@ Request to join the AARUG slack group [here](https://a2mads.herokuapp.com/).
 We'll be using Socrative to ask pop-questions during the workshop. We have a "classroom" that you can join and respond to multiple-choice questions.
 
 The link is [here.](https://b.socrative.com/login/student/)
-The classroom number is: 
+The classroom number is: 22545805
 
 ## Sticky Notes {-}
 
