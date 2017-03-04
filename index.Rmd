@@ -62,11 +62,11 @@ If you've placed your green sticky on the top of your laptop, we'll assume that 
 
 We'll be using a few different data sets for the workshop. Please download them and be prepared to copy them into a working directory the instructors will point you to.
 
-The small Herding Cats dataset is available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.dataurl%7D%7D/herding-cats-small.csv)
+The small Herding Cats dataset is available [here.](https://raw.githubusercontent.com/AnnArborRUserGroup/BeginnerWorkshop/master/data/herding-cats-small.csv)
 
-The full Herding Cats dataset is available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.dataurl%7D%7D/herding-cats.csv)
+The full Herding Cats dataset is available [here.](https://raw.githubusercontent.com/AnnArborRUserGroup/BeginnerWorkshop/master/data/herding-cats.csv)
 
-The Old Faithful dataset for the optional takehome is available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.dataurl%7D%7D/Old-Faithful.csv)
+The Old Faithful dataset for the optional takehome is available [here.](https://raw.githubusercontent.com/AnnArborRUserGroup/BeginnerWorkshop/master/data/Old-Faithful.csv)
 
 ## Takehome {-}
 
