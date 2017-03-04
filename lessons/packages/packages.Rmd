@@ -8,29 +8,48 @@
 
 ------------
 
+# Packages
+
 Packages are bundles of code which extend the functionality of R.
 
-Anyone can make an R package, and anyone can intall anyone else's R package (if they make it available). This is part of the beauty of open source, and using different R packages is essential to modern R workflows.
+Anyone can make an R package, and anyone can install anyone else's R package (if they make it available). This is part of the beauty of open source, and using different R packages is essential to modern R workflows.
 
+<<<<<<< HEAD:lessons/packages/packages.Rmd
 <!--
 Packages are like boxes of tools. you might have enough to start with right out of the box, but your work can be made more efficient by using specialized tools that are best fit for the job you're working on.
 -->
 
 You can get packages from many different places, but we'll focus on just the most common one: CRAN. CRAN is the Comprehensive R Archive Network, a global network of servers which make available for download a set of vetted R packages.
+=======
+You can get packages from many different places, but we'll focus on just the most common one: [CRAN](https://cran.r-project.org). CRAN is the Comprehensive R Archive Network, a global network of servers which make available for download a set of vetted R packages.
+>>>>>>> master:lessons/packages-and-rmarkdown/packages.Rmd
 
 The next section is about importing data, and we'll be using a package called `readr` that is specially equipped to import tabular data.
 
+
 ## Installation
 
-To download and install a package from CRAN, call the `install.packages` command on a string with the name of the desired package:
+To download and install a package from CRAN, call the `install.packages` command on a string with the name of the desired package. You will get output describing the installation progress.
 
+<<<<<<< HEAD:lessons/packages/packages.Rmd
 ```{r, eval = FALSE}
 install.packages("readr")
+=======
+```{r, eval = TRUE}
+install.packages("rmarkdown", repos="http://cran.rstudio.com/")
+>>>>>>> master:lessons/packages-and-rmarkdown/packages.Rmd
 ```
 
 You may be asked to choose a mirror; the RStudio mirror is a good choice as it will pick the nearest mirror automatically. This will also download and install packages which RMarkdown depends on.
 
 You only need to install a package _once per machine,_ unless you need to update an already-installed package. Calling `install.packages` for an existing package will update it if there's a more recent version on CRAN than on your machine.
+
+You can view all of the installed packages using the `installed.packages` command. This will output a lot of information for each package, so if you only want a list of the installed package names, you can specify that you want the "Package" column. I like to look at this as a vector.
+
+```{r, eval = TRUE}
+as.vector(installed.packages()[,"Package"])
+```
+
 
 ## Loading
 
@@ -38,8 +57,22 @@ Most packages need to be loaded into the current environment to be accessible. Y
 
 We load packages with the `library` command:
 
+<<<<<<< HEAD:lessons/packages/packages.Rmd
 ```{r, eval = FALSE}
 library(readr)  # notice the lack of quotes
 ```
 
 `library` statements are usually placed at the start of any code file that you write; oftentimes they're one of the first things you'll type before getting started.
+=======
+```{r, eval = TRUE}
+library(rmarkdown)  # notice the lack of quotes
+```
+
+This will come up again later in the lesson on `dplyr`, an external package that _does_ need to be loaded.
+
+You can also view the packages that you have loaded into your workspace.
+
+```{r, eval = TRUE}
+(.packages())
+```
+>>>>>>> master:lessons/packages-and-rmarkdown/packages.Rmd

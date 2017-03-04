@@ -34,25 +34,25 @@ Before we delve into what each of these pieces mean, let's "knit" the document s
 
 You should see a new pane open in RStudio that shows R "knitting" the document, and when it's done, a pop-up will appear showing the knitted output.
 
-This new output being displayed is an `html` file; look in the file browser pane, and you'll see a `.html` file next to your `.Rmd` file (may need to refresh), because RStudio automatically saved this output when the document finished knitting.
+This new output being displayed as an `html` file; look in the file browser pane, and you'll see a `.html` file next to your `.Rmd` file (may need to refresh), because RStudio automatically saved this output when the document finished knitting.
 
 Let's look at the individual pieces in this document:
 
 ### Header
-
 This is the section at the top, with three dashes before and after. This lists some metadata about the object. The title, date, and author form the start of the output document, and the `output:` line instructs the knitting process to generate an html file.
 
 ### Section Titles
-
 You can enlarge text be preceding it with one or more pound signs (`#`). This is mainly useful for organizing a document into sections. The more pound signs, the smaller the text, so when you make sub-section you should add at least one more pound sign than used in the parent sections' title.
 
 ### Link
 
-Notice the link in the first section, wrapped in angle brackets (`<`, `>`). This makes that text a clickable link.
+You can make text clickable by including a link to a different website. An example can be found above, where we included a link to [CRAN](https://cran.r-project.org).
+
+There are two parts to creating linked text. The first part is including the text you want to see, surrounded by square brackets `[CRAN]`. Immediately after that, add the link surrounded by parentheses `(https://cran.r-project.org)`. The final product looks like `[CRAN](https://cran.r-project.org)`.
 
 ### Bold/Italic Text
 
-The double-asterisks surrounding the word "Knit" in the second paragraph cause that piece of text to be bold. This phrase can be multiple words, but should not have spaces immediately on the inside of the asterisks. You can make text italix by similarly wrapping in underscores (`_`).
+The double-asterisks surrounding the word "Knit" in the second paragraph cause that piece of text to be bold. This phrase can be multiple words, but should not have spaces immediately on the inside of the asterisks. You can make text italix by similarly wrapping in underscores (`_`) or using single asterisks.
 
 ### Code Chunks
 
@@ -63,6 +63,7 @@ This is the real meat of the document! An R Markdown code chunk is a section whi
 As the second default section discusses, we can hide the code in a code chunk by placing a comma after out chunk name and setting an option `echo=FALSE`. The code will still execute, and its output will be inserted in the knitted document, but it will not be shown.
 
 Similarly, you can set `eval=FALSE` to avoid running a code chunk.
+
 
 ## Digging Deeper
 

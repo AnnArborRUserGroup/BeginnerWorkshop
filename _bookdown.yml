@@ -9,5 +9,6 @@ rmd_files: [
   "lessons/dataframes/dataframes.Rmd",
   "lessons/rmarkdown/rmarkdown.Rmd",
   "lessons/dplyr/dplyr.Rmd",
-  "lessons/data-visualization/ggplot2.Rmd"
+  "lessons/data-visualization/ggplot2.Rmd",
+  "lessons/statistics/statistics.Rmd"
   ]

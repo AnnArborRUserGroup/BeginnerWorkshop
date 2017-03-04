@@ -193,18 +193,18 @@ Another popular machine learning technique is k-means clustering.  It seeks to g
 
 ```{r}
 cats <- cats %>% 
-  mutate(scale_weight = scale(weight),
-         scale_wander = scale(wander_dist),
-         scale_age = scale(age))
+  mutate(scale_weight = as.numeric(scale(weight)),
+         scale_wander = as.numeric(scale(wander_dist)),
+         scale_age = as.numeric(scale(age)))
 ```
 
 ------------
 
 We use the `kmeans` function to perform the clustering, and need to pass it a data frame, the number of centers we want, and another argument `nstart`, which helps get around some numerical issues if the algorithm gets stuck in a local extrema.
 
-```{r}
+```{r kmeans2}
 cats_cluster <- 
-  kmeans(x = cats %>% select(scale_weight, scale_wander, scale_age), 
+  kmeans(x = cats %>% dplyr::select(scale_weight, scale_wander, scale_age), 
          centers = 3,
          nstart = 20)
 str(cats_cluster)
