@@ -70,7 +70,7 @@ The Old Faithful dataset for the optional takehome is available [here.](https://
 
 ## Takehome {-}
 
-There is an optional takehome assignment available [here.](https://github.com/AnnArborRUserGroup/AARUG-R-workshop/blob/gh-pages/%7B%7Bpage.lessonurl%7D%7D/takehome/takehome.html)
+There is an optional takehome assignment available [here.](https://raw.githubusercontent.com/AnnArborRUserGroup/BeginnerWorkshop/master/lessons/takehome.Rmd)
 
 ## Contributing {-}
 
