@@ -22,7 +22,6 @@ You can get packages from many different places, but we'll focus on just the mos
 
 The next section is about importing data, and we'll be using a package called `readr` that is specially equipped to import tabular data.
 
-
 ## Installation
 
 To download and install a package from CRAN, call the `install.packages` command on a string with the name of the desired package. You will get output describing the installation progress.
@@ -31,7 +30,7 @@ To download and install a package from CRAN, call the `install.packages` command
 install.packages("readr")
 ```
 
-You may be asked to choose a mirror; the RStudio mirror is a good choice as it will pick the nearest mirror automatically. This will also download and install packages which RMarkdown depends on.
+You may be asked to choose a mirror; the RStudio mirror is a good choice as it will pick the nearest mirror automatically.
 
 You only need to install a package _once per machine,_ unless you need to update an already-installed package. Calling `install.packages` for an existing package will update it if there's a more recent version on CRAN than on your machine.
 
